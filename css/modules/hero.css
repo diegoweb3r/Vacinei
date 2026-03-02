@@ -1,0 +1,30 @@
+#hero{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero__logo-image{
+    width: 4.688rem;
+    background:var(--brand-gradient);
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.hero__title{
+    max-width: 800px;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 3.5rem;
+    text-align: center;
+}
+
+.hero__description{
+    color: var(--text-muted);
+    max-width: 600px;
+     text-align: center;
+    font-size: 1.2rem;
+}

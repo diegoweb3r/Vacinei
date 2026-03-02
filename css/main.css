@@ -1,0 +1,54 @@
+:root {
+  /* --- PALETA PRINCIPAL (Extraída da imagem) --- */
+  --primary-color: #23cc8b;       /* O tom principal do seu print */
+  --primary-light: #56b1b1;       /* Versão mais clara para o degradê */
+  
+  /* --- DEGRADÊ --- */
+  /* Linear gradient suave seguindo a inclinação da imagem */
+  --brand-gradient: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+
+  /* --- CORES NEUTRAS (Conforto Visual) --- */
+  /* Um "Preto" levemente azulado para não agredir a vista */
+  --text-main: #1d2121;           
+  /* Um "Cinza" equilibrado para textos secundários e descrições */
+  --text-muted: #576566;          
+  /* Um "Branco" levemente acinzentado (Off-white) para o fundo */
+  --bg-body: #f8fcfc;             
+  /* Branco puro apenas para elementos que precisam saltar aos olhos (cards) */
+  --white: #ffffff;               
+
+  /* --- OUTRAS VARIÁVEIS ÚTEIS --- */
+  --border-color: #1d2121;
+
+  --border-radius: 0.8rem;
+}
+
+body{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+/* Botões */
+.bttn{
+    background: var(--brand-gradient);
+    padding: .8rem;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: .1rem;
+}
+
+/* Links */
+a:hover{
+    color: var(--primary-color);
+}
+
+.highlight{
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
