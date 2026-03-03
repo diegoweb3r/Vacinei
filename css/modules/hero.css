@@ -25,6 +25,6 @@
 .hero__description{
     color: var(--text-muted);
     max-width: 600px;
-     text-align: center;
+    text-align: center;
     font-size: 1.2rem;
 }

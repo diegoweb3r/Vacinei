@@ -1,0 +1,71 @@
+#create-account{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-account__image{
+    width: 4.688rem;
+    background:var(--brand-gradient);
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.create-account__description{
+    color: var(--text-muted);
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.auth-form{
+    border: 1px solid var(--text-main);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: .2rem 0;
+    gap: .3rem;
+    position: relative;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; 
+    width: 100%;
+}
+
+.input-helper{
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--primary-color);
+}
+
+#create-account button{
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.auth_footer p{
+    margin-top: .5rem;
+    size: 0.6rem;
+}
+
+.auth_footer a{
+    font-weight: 700;
+}

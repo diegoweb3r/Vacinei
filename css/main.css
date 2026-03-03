@@ -28,6 +28,7 @@ body{
     background-color: var(--bg-body);
     color: var(--text-main);
     scroll-behavior: smooth;
+
 }
 
 /* Botões */
@@ -60,3 +61,7 @@ a:not(.bttn):hover{
 }
 
 
+
+input{
+    padding: 0.3rem;
+}

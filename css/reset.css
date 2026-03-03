@@ -38,7 +38,7 @@ select {
 /* 6. Remove animations for people who prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+   scroll-behavior: smooth;
   }
   
   *,
@@ -60,4 +60,9 @@ a {
 /* 8. HTML 5 set up - Garante scroll suave */
 html {
   scroll-behavior: smooth;
+}
+
+button{
+  border: none;
+  cursor: pointer;
 }
