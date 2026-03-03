@@ -54,8 +54,44 @@ a:not(.bttn):hover{
     color: var(--primary-color);
 }
 
+/* Inputs */
+.input-group{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: .2rem 0;
+    gap: .3rem;
+    position: relative;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(35, 204, 139, 0.1);
+}
+
+.input-helper{
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.1;
+    margin-top: 0.15rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--primary-color);
+}
+
+
+/* Outro */
 .highlight{
     background: var(--brand-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.auth-wraper{
+min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
