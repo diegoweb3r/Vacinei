@@ -27,6 +27,7 @@ body{
     font-family: "Plus Jakarta Sans", sans-serif;
     background-color: var(--bg-body);
     color: var(--text-main);
+    scroll-behavior: smooth;
 }
 
 /* Botões */
@@ -38,10 +39,17 @@ body{
     font-weight: 900;
     color: var(--white);
     letter-spacing: .1rem;
+    transition: transform 0.6s ease;
+}
+
+.bttn:hover{
+   filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(35, 204, 139, 0.3);
 }
 
 /* Links */
-a:hover{
+a:not(.bttn):hover{
     color: var(--primary-color);
 }
 
