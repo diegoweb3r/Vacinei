@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../css/modules/features.css">
     <link rel="stylesheet" href="../css/modules/footer.css">
     <link rel="stylesheet" href="../css/modules/cadastro.css">
+    <link rel="stylesheet" href="../css/modules/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
@@ -43,48 +44,27 @@
     </header>
 
 
-    <main id="create-account">
-        <img class="create-account__image"src="../assets/images/formulario.png" alt="icone de cadastro">
-        <h2 class="create-account__title">Crie sua conta</h2>
-        <p class="create-account__description">Comece a controlar suas vacinas agora mesmo!</p>
+    <main id="login-section">
+        <img class="create-account__image"src="../assets/images/persona.png" alt="icone de login">
+        <h2 class="create-account__title">Acesse sua conta</h2>
+        <p class="create-account__description">Mantenha seu histórico de vacinas atualizado!</p>
         <form action="#" method="POST" class="auth-form">
-            <div class="input-group">
-                <label for="full_name">Nome completo</label>
-                <input type="text" id="full_name" name="full_name" placeholder="Seu nome completo" required>
-            </div>
-            <div class="input-group"> 
+                      <div class="input-group"> 
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu melhor e-mail" required>
-            </div>
-            <div class="input-row">
-                <div class="input-group">    
-                    <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
-                </div>
-                <div class="input-group">
-                    <label for="birthdate">Data de nascimento</label>
-                    <input type="date" id="birthdate" name="birthdate" required>
-                </div>
+                <input type="email" id="email" name="email" placeholder="email@email.com" required>
             </div>
             <div class="input-group">    
                 <label for="password">Senha</label>
                 <input type="password" id="password" name="password" placeholder="Digite sua senha" minlength="8" required>
-                <small class="input-helper">A senha deve ter no mínimo 8 caracteres.</small>
-                <small class="input-helper">A senha deve ter caracteres especiais. (@#!$%&*).</small>
-                <small class="input-helper">A senha deve ter no minimo um número.</small>
-                <small class="input-helper">A senha deve ter no minimo uma letra.</small>
+                <a href="#" class="forgot-password">Esqueceu a senha?</a>
             </div>
-            <div class="input-group">
-                <label for="password_confirm">Confirme sua senha</label>
-                <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirme sua senha" required>
-            </div>
-            <button type="submit" class="bttn">Criar conta</button>
+            <button type="submit" class="bttn">Acessar</button>
 
             <div class="auth_footer">
-                <p>Ja tem uma conta? <a href="/pages/login.html">Entrar</a></p>
+                <p>Não possui uma conta? <a href="/pages/cadastro.html">Cadastre-se</a></p>
 
             </div>
         </form>
-    </main>
+    </section>
   </body>
 </html>
