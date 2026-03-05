@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!--Meta-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vacinei: A forma mais segura e fácil de gerenciar sua carteira de vacinação digital. Receba alertas e mantenha seu histórico sempre à mão.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VACINEI - Sua Carteira de Vacinas Digital">
+    <meta property="og:description" content="Controle suas vacinas de forma simples e segura.">
+    <meta property="og:image" content="https://seusite.com/assets/images/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <!--Links-->
+    <link rel="icon" href="../assets/flaticon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/modules/header.css">
+    <link rel="stylesheet" href="../css/modules/hero.css">
+    <link rel="stylesheet" href="../css/modules/features.css">
+    <link rel="stylesheet" href="../css/modules/footer.css">
+    <link rel="stylesheet" href="../css/modules/cadastro.css">
+    <link rel="stylesheet" href="../css/modules/login.css">
+    <link rel="stylesheet" href="../css/modules/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <!--Title-->
+    <title>VACINEI | Sua Carteira de vacinas Digital</title>
+  </head>
+<body>
+    <main>
+        <section id="profile-menu">
+            <div class="profile-inf">
+                <img class="profile-inf__picture" src="../assets/images/pessoas.png" alt="icone de uma pessoa sem foto">
+                <p class="profile-inf__name">Diego Felipe Weber</p>
+            </div>
+            
+            <div class="vaccines-menu">
+                <div class="vaccines-menu__inf">
+                    <p class="vaccines-menu__inf__name">Total de vacinas</p>
+                    <p class="vaccines-menu__inf__number">5</p>
+                </div>
+                <div class="vaccines-menu__inf">
+                    <p class="vaccines-menu__inf__name">Aplicadas</p>
+                    <p class="vaccines-menu__inf__number">4</p>
+                </div>
+                <div class="vaccines-menu__inf">
+                    <p class="vaccines-menu__inf__name">Pendentes</p>
+                    <p class="vaccines-menu__inf__number">1</p>
+                </div>
+            </div>
+            <div class="profile-config">
+                <a href="">Configurações</a>
+                <a href="../index.html">Logout</a>
+            </div>
+        </section>
+    
+        <section class="search-filter-add">
+            <div class="search-filter__container">
+                <form class="search-filter__form" action="">
+                    <label for="vaccine-search" class="onlyreader">Buscar vacinas</label>
+                    <input class="search-filter__input" type="text" name="vaccine-search" id="vaccine-search" placeholder="Buscar vacina">
+                </form>
+                <div class="search-filter__container__filters">
+                    <a class="search-filter__filter__all">Todas</a>
+                    <a class="search-filter__filter__apllied">Aplicadas</a>
+                    <a class="search-filter__filter__pending">Pendentes</a>
+                </div>
+            </div>
+            <div class="search-filter__add">
+                    <button class="search-filter__add__button bttn">Adicionar</button>
+            </div>
+            
+        </section>
+
+        <section class="vaccines">
+               <article class="vaccines__card__container">
+                <div class="vaccines__card">
+                    <div class="vaccines__card-img">
+                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
+                    </div>
+                    <div class="vaccines__card-text">
+                        <div class="vaccines_card-text__name">
+                            <h3 class="vaccines__card-text__title">COVID</h3>
+                            <span class="vaccines__card-text__situation applied">Aplicada</span>
+                        </div>
+                        
+                        <div class="vaccines__card-text__info">
+                            <p class="vaccines__card-text__info__dose">1 dose</p>
+                            <p class="vaccines_card-text__info__date">01/01/2026</p>
+                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="vaccine__buttons">
+                    <button class="vaccine__buttons__edit"><img src="../assets/images/edit.png" alt=""></button>
+                    <button class="vaccine__buttons__delete"><img src="../assets/images/delete.png" alt=""></button>
+                </div>
+            </article>
+        </section>
+</main>
+
+</body>
+</html>

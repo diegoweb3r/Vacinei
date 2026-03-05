@@ -17,6 +17,23 @@
   /* Branco puro apenas para elementos que precisam saltar aos olhos (cards) */
   --white: #ffffff;               
 
+  /* Botão Editar - Amarelo */
+--edit-gradient: linear-gradient(
+  135deg,
+  #ffe082 0%,   /* amarelo claro */
+  #fbc02d 100%  /* amarelo mais forte */
+);
+
+/* Botão Excluir - Vermelho */
+
+--red-primary:#ef5350;
+--red-secondary: #c62828;
+--delete-gradient: linear-gradient(
+  135deg,
+  #ef5350 0%,   /* vermelho claro */
+  #c62828 100%  /* vermelho mais intenso */
+);
+
   /* --- OUTRAS VARIÁVEIS ÚTEIS --- */
   --border-color: #1d2121;
 
@@ -54,6 +71,10 @@ a:not(.bttn):hover{
     color: var(--primary-color);
 }
 
+a{
+    cursor: pointer;
+}
+
 /* Inputs */
 .input-group{
     width: 100%;
@@ -89,9 +110,18 @@ a:not(.bttn):hover{
 }
 
 .auth-wraper{
-min-height: 90vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.onlyreader{
+    display: none;
+}
+
+.applied{
+    border: 1px solid var(--primary-light);
+    color: var(--primary-color);
 }

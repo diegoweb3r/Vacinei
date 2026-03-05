@@ -1,0 +1,196 @@
+main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+   
+}
+
+#profile-menu{
+    max-width: 80%;
+    width: 80%;
+    border: 1px solid var(--text-main);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
+}
+
+.profile-inf{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-inf__picture{
+    width: 5rem;
+}
+.profile-inf__name{
+    font-size: 1.5rem;
+}
+
+.vaccines-menu{
+    width: 60%;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.vaccines-menu__inf{
+    width: 15rem;
+    border: 1px solid var(--text-main);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    transition: transform .3s ease;
+}
+
+.vaccines-menu__inf:nth-child(2){
+    color: var(--primary-color);
+    border: 1px solid var(--primary-light);
+}
+
+.vaccines-menu__inf:nth-child(2):hover{
+    background: var(--brand-gradient);
+    color: var(--text-main);
+}
+
+.vaccines-menu__inf:nth-child(3){
+    color: var(--red-primary);
+    border: 1px solid var(--red-secondary);
+}
+
+.vaccines-menu__inf:nth-child(3):hover{
+    background: var(--delete-gradient);
+    color: var(--text-main);
+}
+
+.vaccines-menu__inf:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+
+.profile-config{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid var(--text-main);
+    padding: 0 2rem;
+}
+
+.search-filter-add{
+    max-width: 80%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+
+.search-filter__container{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.search-filter__form{
+    width: 100%;
+    
+}
+
+.search-filter__input{
+    padding: 0.7rem;
+    border: 1px solid #ccc; 
+    border-radius: 0.4rem;
+    font-family: inherit; 
+    width: 85%;
+    height: 2.5rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(35, 204, 139, 0.1);
+}
+.search-filter__container__filters{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.search-filter__add__button{
+    
+}
+
+.vaccines__card-img-img{
+    width: 50px;
+}
+
+.vaccines{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 50% 2fr;
+    gap: 2rem;
+}
+
+.vaccines__card__container{
+    border: 1px solid var(--text-main);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vaccines__card{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.vaccines_card-text__name{
+    display: flex;
+    height: 3.5rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.vaccines__card-text__situation{
+    font-size: .7rem;
+    border-radius: var(--border-radius);
+    padding: .2rem .8rem;
+    font-weight: 900;
+}
+
+.vaccines__card-text__info{
+    display: flex;
+    gap: 1rem;
+    font-size: .9rem;
+    color: var(--text-muted);
+}
+
+.vaccine__buttons button{
+    padding: 0.8rem;
+}
+
+.vaccine__buttons button img{
+    width: 2rem;
+}
+
+.vaccine__buttons__edit:hover{
+    border-radius: 50%;
+    background: var(--edit-gradient)
+}
+
+.vaccine__buttons__delete:hover{
+border-radius: 50%;
+    background: var(--delete-gradient)
+}
