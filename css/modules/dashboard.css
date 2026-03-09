@@ -62,12 +62,12 @@ main{
 }
 
 .vaccines-menu__inf:nth-child(3){
-    color: var(--red-primary);
-    border: 1px solid var(--red-secondary);
+    color: var(--yellow-primary);
+    border: 1px solid var(--yellow-secondary);
 }
 
 .vaccines-menu__inf:nth-child(3):hover{
-    background: var(--delete-gradient);
+    background: var(--edit-gradient);
     color: var(--text-main);
 }
 
@@ -124,10 +124,6 @@ input:focus {
     display: flex;
     align-items: center;
     gap: 2rem;
-}
-
-.search-filter__add__button{
-    
 }
 
 .vaccines__card-img-img{

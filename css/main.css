@@ -18,6 +18,8 @@
   --white: #ffffff;               
 
   /* Botão Editar - Amarelo */
+--yellow-primary: #ffe082;
+--yellow-secondary: #fbc02d;
 --edit-gradient: linear-gradient(
   135deg,
   #ffe082 0%,   /* amarelo claro */
@@ -60,6 +62,9 @@ body{
     transition: transform 0.6s ease;
 }
 
+.bttn + .delete{
+    background: var(--delete-gradient);
+}
 .bttn:hover{
    filter: brightness(1.1);
     transform: translateY(-2px);
@@ -81,7 +86,7 @@ a{
     display: flex;
     flex-direction: column;
     margin: .2rem 0;
-    gap: .3rem;
+    gap: .5rem;
     position: relative;
 }
 
@@ -101,6 +106,13 @@ a{
     border-left: 2px solid var(--primary-color);
 }
 
+input[type="file"]{
+    padding: 0 !important;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
 
 /* Outro */
 .highlight{
@@ -124,4 +136,39 @@ a{
 .applied{
     border: 1px solid var(--primary-light);
     color: var(--primary-color);
+}
+
+.pedding{
+    border: 1px solid var(--yellow-primary);
+    color: var(--yellow-secondary);
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background: var(--brand-gradient);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
 }
