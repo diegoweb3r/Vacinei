@@ -62,9 +62,10 @@ body{
     transition: transform 0.6s ease;
 }
 
-.bttn + .delete{
+.bttn.delete{
     background: var(--delete-gradient);
 }
+
 .bttn:hover{
    filter: brightness(1.1);
     transform: translateY(-2px);
