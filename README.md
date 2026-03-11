@@ -20,10 +20,11 @@ Este projeto faz parte da minha jornada de especialização em tecnologia, unind
 
 ### ⚙️ Funcionalidades  
 - [🟢] Website  
-- [🔴] Website responsivo
-- [🔴] Tela de cadastro de usuario
-- [🔴] Tela de configurações
+- [🟢] Website responsivo
+- [🟢] Tela de cadastro de usuario
+- [🟢] Tela de configurações
 - [🔴] CRUD de vacinas
+- [🔴] CRUD Usuarios
 ---
 
 ### 👤 Autor
