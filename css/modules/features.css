@@ -1,6 +1,7 @@
 #features{
-    padding: 80px 0;
+    padding: 5rem 2rem;
     text-align: center;
+
 }
 
 #features .features__cards-container{
@@ -44,4 +45,11 @@
 
 .card .features__feature-description{
     color: var(--text-muted);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1024px){
+    .features__cards-container{
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
 }

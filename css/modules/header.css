@@ -11,6 +11,7 @@
     box-shadow: var(--shadow-sm);
 
 }
+
 .navbar__logo-container{
     display: flex;
     justify-content: center;
@@ -43,4 +44,83 @@
 .navbar__links-container ul{
     display: flex;
     gap: 3rem;
+}
+
+
+/* MEDIA QUERIES (RESPONSIVIDADE) */
+@media (max-width: 768px){
+    .navbar__logo-image{
+        display: none;
+    }
+
+    .navbar__logo-container{
+        width: 30%;
+    }
+    
+    .navbar__links-container{
+        width: auto;
+    }
+}
+
+@media (max-width: 576px){
+
+    #navbar{
+        justify-content:space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+    }
+
+    .navbar__logo-container{
+        width: auto !important;
+    }
+
+    .mobile-menu{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .mobile-menu__img{
+        width: 2rem;
+        height: auto;
+    }
+
+    .mobile-menu input{
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        width: 100%;
+        height: 100%;
+    } 
+
+    .navbar__links-container ul {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 5.5rem; 
+        right: 0;
+        width: 100%;
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--text-main);
+        padding: 2rem;
+        gap: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    .mobile-menu:has(input:checked) + .navbar__links-container ul {
+        display: flex;
+    }
+
+    .mobile-menu input:checked + .mobile-menu__img {
+        content: url("/assets/images/fechar.png");
+        transform: rotate(90deg);
+        transition: transform 0.3s ease;
+    }
+
+    
 }

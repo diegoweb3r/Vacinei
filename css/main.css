@@ -43,6 +43,7 @@
 }
 
 body{
+    width: 100%;
     font-family: "Plus Jakarta Sans", sans-serif;
     background-color: var(--bg-body);
     color: var(--text-main);
@@ -167,7 +168,7 @@ input:checked + .slider:before {
 }
 
 .onlyreader{
-    visibility: hidden;
+    display: none;
 }
 
 .applied{
@@ -226,4 +227,8 @@ input:checked + .slider:before {
     width: 3.125rem;
     height: auto;
     object-fit: contain;
+}
+
+.mobile-menu{
+    display: none;
 }

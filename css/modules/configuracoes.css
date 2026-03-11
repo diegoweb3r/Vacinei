@@ -113,3 +113,18 @@
     border-radius: var(--border-radius);
     z-index: 9999;
 }
+
+@media (max-width: 1024px){
+
+    #config{
+        padding: 2rem;
+    }
+
+    .config-buttons__container{
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        right: 0;
+    }
+}
