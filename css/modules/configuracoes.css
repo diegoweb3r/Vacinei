@@ -7,8 +7,8 @@
 .config-title{
     display: flex;   
     gap: 3rem;
-    width: 60%;
-    display: flex;
+    width: 100%;
+    max-width: 800px;
     align-items: center;
     margin-bottom: 2rem;
 }
@@ -29,7 +29,8 @@
 }
 
 #config form{
-    width: 60%;
+    width: 100%;
+    max-width: 800px;
 }
 
 .personal-data,
@@ -44,57 +45,13 @@
     justify-content: center;
 }
 
-.personal-data__title,
-.notifications__title,
-.security__title,
-.misc__title{
-    display: flex;
-    gap: 1rem;
-    border-bottom: 1px solid var(--text-muted);
-    margin-bottom: 1rem;
-}
 .notifications {
     gap: 2rem;
 }
-
-.personal-data__text,
-.notifications-text,
-.security-text,
-.misc-text{
-    margin-bottom: 1rem;
-  
-}
-
-.personal-data__text__title,
-.notifications__text__title,
-.security__text__title,
-.misc__text__title{
-    font-size: 1.2rem;
-  
-}
-
-.personal-data-text__description,
-.notifications__description,
-.security__description,
-.misc__description{
-    font-size: .9rem;
-    color: var(--text-muted);
-}
-
-.personal-data__image, 
-.notifications__image,
-.security__image,
-.misc__image {
-    width: 3.125rem;
-    height: auto;
-    object-fit: contain;
-}
-
 .config-profile-picture{
     width: 3.125rem;
     margin-bottom: 0.5rem;
 }
-
 
 #config form input{
     padding: 0.7rem;

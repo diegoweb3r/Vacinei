@@ -15,12 +15,8 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/modules/header.css">
-    <link rel="stylesheet" href="../css/modules/hero.css">
-    <link rel="stylesheet" href="../css/modules/features.css">
     <link rel="stylesheet" href="../css/modules/footer.css">
     <link rel="stylesheet" href="../css/modules/cadastro.css">
-    <link rel="stylesheet" href="../css/modules/login.css">
-    <link rel="stylesheet" href="../css/modules/dashboard.css">
     <link rel="stylesheet" href="../css/modules/configuracoes.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,13 +30,13 @@
                 <img src="../assets/images/vacinei-logo.png" alt="logo vacinei" class="navbar__logo-image">
                 <p class="navbar__logo-text">Vacinei</p>
             </div>
-            <div class="navbar__links-container">
+            <nav class="navbar__links-container">
                 <ul>
-                    <li><a href=index.html>Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="#features">Funcionalidades</a></li>
                     <li><a href="../index.html" class="bttn delete">LOGOUT</a></li>
                 </ul>
-            </div>
+            </nav>
         </header>
     <main id="config">
         <div class="config-title">
@@ -49,11 +45,11 @@
         </div>
         <form action="#" method="POST" class="config-forms">
             <section class="personal-data">
-                <div class="personal-data__title">
-                    <img class="personal-data__image" src="../assets/images/persona.png" alt="icone de perfil">
-                    <div class="personal-data__text">
-                        <h4 class="personal-data__text__title">Dados pessoais</h4>
-                        <p class="personal-data-text__description">Atualize suas informações pessoais</p>
+                <div class="section-title">
+                    <img class="section-image" src="../assets/images/persona.png" alt="icone de perfil">
+                    <div class="section-text">
+                        <h4 class="section-text-title">Dados pessoais</h4>
+                        <p class="section-text-desc">Atualize suas informações pessoais</p>
                     </div>
                 </div>
                     <div class="input-group__container">
@@ -84,11 +80,11 @@
             </section>
 
             <section class="notifications">
-                <div class="notifications__title">
-                    <img class="notifications__image" src="../assets/images/notificacao.png" alt="icone de notifcicação">
-                    <div class="notifications-text">
-                        <h4 class="notifications__text__title">Notificações</h4>
-                        <p class="notifications__description">Gerencie seus alertas</p>
+                <div class="section-title">
+                    <img class="section-image" src="../assets/images/notificacao.png" alt="icone de notifcicação">
+                    <div class="section-text">
+                        <h4 class="section-text-title">Notificações</h4>
+                        <p class="section-text-desc">Gerencie seus alertas</p>
                     </div>
                 </div>
 
@@ -118,19 +114,19 @@
             </section>
 
             <section class="security">
-                <div class="security__title">
-                    <img class="security__image" src="../assets/images/escudo.png" alt="icone de notifcicação">
-                    <div class="security-text">
-                        <h4 class="security__text__title">Segurança</h4>
-                        <p class="security__description">Altere sua senha de acesso</p>
+                <div class="section-title">
+                    <img class="section-image" src="../assets/images/escudo.png" alt="icone de notifcicação">
+                    <div class="section-text">
+                        <h4 class="section-text-title">Segurança</h4>
+                        <p class="section-text-desc">Altere sua senha de acesso</p>
                     </div>
                 </div>
 
                 <div class="input-group__container input-group">
                     <label for="password">Digite sua senha atual</label>
-                    <input type="password" id="passoword" name="password">
+                    <input type="password" id="password" name="password">
                     <label for="newpassword">Nova Senha</label>
-                    <input type="password" id="newpassword" name="newpassoword">
+                    <input type="password" id="newpassword" name="newpassword">
                     <div class="input-helper__containers">
                         <small class="input-helper">A senha deve ter no mínimo 8 caracteres.</small>
                         <small class="input-helper">A senha deve ter caracteres especiais. (@#!$%&*).</small>
@@ -144,11 +140,11 @@
             </section>
 
             <section class="misc">
-                <div class="misc__title">
-                    <img class="misc__image" src="../assets/images/ferramentas.png" alt="icone de ferramentas">
-                    <div class="misc-text">
-                        <h4 class="misc__text__title">Diversos</h4>
-                        <p class="security__description">Outras configurações</p>
+                <div class="section-title">
+                    <img class="section-image" src="../assets/images/ferramentas.png" alt="icone de ferramentas">
+                    <div class="section-text">
+                        <h4 class="section-text-title">Diversos</h4>
+                        <p class="section-text-desc">Outras configurações</p>
                     </div>
                 </div>
                  <div class="misc__controls toggles__container">
