@@ -5,6 +5,7 @@
     justify-content: space-around;
     align-items: center;
     color: var(--text-muted);
+    margin-top: 2rem;
 }
 
 /* MEDIA QUERIES */
