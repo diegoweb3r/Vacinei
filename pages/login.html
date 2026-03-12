@@ -26,21 +26,24 @@
   </head>
 
   <body>
-    <header id="navbar">
+     <header id="navbar">
         <div class="navbar__logo-container">
-            <img src="../assets/images/vacinei-logo.png" alt="logo vacinei" class="navbar__logo-image">
+            <img src="./assets/images/vacinei-logo.png" alt="logo vacinei" class="navbar__logo-image">
             <p class="navbar__logo-text">Vacinei</p>
         </div>
-        <div class="navbar__links-container">
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#features">Funcionalidades</a></li>
-                <li><a href="/pages/login.html" class="nav-link-login">Entrar</a></li>
-                <li><a href="/pages/cadastro.html" class="bttn">Cadastrar</a></li>
-            </ul>
+        <div class="mobile-menu">
+            <input type="checkbox">
+            <img class="mobile-menu__img" src="../assets/images/cardapio.png">
         </div>
+        <nav class="navbar__links-container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Funcionalidades</a></li>
+                <li><a href="./pages/login.html" class="nav-link-login">Entrar</a></li>
+                <li><a href="./pages/cadastro.html" class="bttn">Cadastrar</a></li>
+            </ul>
+        </nav>
     </header>
-
 
     <main id="login-section" class="auth-wrapper">
         <img class="create-account__image"src="../assets/images/persona.png" alt="icone de login">
