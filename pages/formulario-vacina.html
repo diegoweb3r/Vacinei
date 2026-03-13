@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!--Meta-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vacinei: A forma mais segura e fácil de gerenciar sua carteira de vacinação digital. Receba alertas e mantenha seu histórico sempre à mão.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VACINEI - Sua Carteira de vacinas digital">
+    <meta property="og:description" content="Controle suas vacinas de forma simples e segura.">
+    <meta property="og:image" content="https://seusite.com/assets/images/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <!--Links-->
+      <link rel="icon" href="../assets/flaticon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/modules/header.css">
+    <link rel="stylesheet" href="../css/modules/hero.css">
+    <link rel="stylesheet" href="../css/modules/features.css">
+    <link rel="stylesheet" href="../css/modules/footer.css">
+    <link rel="stylesheet" href="../css/modules/cadastro.css">
+    <link rel="stylesheet" href="../css/modules/login.css">
+    <link rel="stylesheet" href="../css/modules/dashboard.css">
+    <link rel="stylesheet" href="../css/modules/configuracoes.css">
+    <link rel="stylesheet" href="../css/modules/formulario-vacina.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <!--Title-->
+    <title>VACINEI | Sua Carteira de vacinas digital</title>
+  </head>
+
+  <body>
+     <header id="navbar">
+            <div class="navbar__logo-container">
+                <img src="../assets/images/vacinei-logo.png" alt="logo vacinei" class="navbar__logo-image">
+                <p class="navbar__logo-text">Vacinei</p>
+            </div>
+            <div class="mobile-menu">
+            <input type="checkbox">
+            <img class="mobile-menu__img" src="../assets/images/cardapio.png">
+        </div>
+            <nav class="navbar__links-container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="../index.html" class="bttn delete">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="config" class="add-edit-vaccine">
+            <div class="config-title">
+                <a href="./dashboard.html"><img class="conif-title__img" src="../assets/images/seta-esquerda.png" alt="icone de seta"></a>
+                <h2>Dados da Vacina</h2>
+            </div>
+            <section class="sections">
+                <div class="input-group">
+                    <label for="vaccine-name">Nome</label>
+                    <input type="text" id="vaccine-name">
+                </div>
+                
+               <div class="input-row">
+                    <div class="input-group">
+                        <label for="vacina-data">Data da Aplicação</label>
+                        <input type="date" id="vacina-data">
+                    </div>
+                    <div class="input-group">
+                        <label for="vacina-dose">Dose</label>
+                        <select id="vacina-dose" class="custom-select">
+                            <option value="unica">Dose Única</option>
+                            <option value="1">1ª Dose</option>
+                            <option value="2">2ª Dose</option>
+                            <option value="3">3ª Dose</option>
+                            <option value="reforco">Reforço</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="vacina-lote">Lote</label>
+                <input type="text" id="vacina-lote" placeholder="Ex: Lote 12345">
+            </div>
+        </section>
+            <div class="bttn__container">
+                <button class="delete-vaccine bttn delete">Descartar</button>
+                <button class="save-vaccine bttn">Salvar</button>
+            </div>
+        </main>
+
+
+    <footer id="footer">
+      <p class="footer__credits">
+        © 2026 VACINEI. Todos os direitos reservados.
+      </p>
+      <p class="footer__text">Controle de vacinas simplificado.</p>
+    </footer>
+  </body>
+</html>

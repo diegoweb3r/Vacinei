@@ -1,16 +1,16 @@
 #footer{
     height: 5.5rem;
+    max-height: 5.5rem !important;
     border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: var(--text-muted);
     margin-top: 2rem;
+    flex-shrink: 0;
 }
 
 /* MEDIA QUERIES */
-
-
 @media (max-width: 576px){
 
     #footer{

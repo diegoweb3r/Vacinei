@@ -1,5 +1,4 @@
 #config{
-    padding: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,26 +24,11 @@
     border-radius: var(--border-radius);
 }
 
-#config section{
-    width: 100%;
-    margin-bottom: 1rem;
-}
+
 
 #config form{
     width: 100%;
     max-width: 800px;
-}
-
-.personal-data,
-.notifications,
-.security,
-.misc{
-    border: 1px solid var(--text-main);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .notifications {
@@ -99,13 +83,14 @@
 
 
 .input-group__container {
+    
     display: flex;
     flex-direction: column;         
 }
 
 .config-buttons__container{
    position: fixed;
-    bottom: 1rem;
+    bottom: 5.5rem;
     right: 2rem;
     width: auto !important; 
     display: inline-flex; 
