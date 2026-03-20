@@ -20,28 +20,29 @@ const helperSpecial = document.getElementById("password-special-caracter");
 
 /*EVENT LISTENERS*/
 if(loginForm){
-
     loginForm.addEventListener("submit", (e) =>{
         e.preventDefault();
         
         if(isLoginFormEmpty()){
             return
+        };
+
+        if(authenticateUser()){
+            alert("Tudo certo, voce será redirecionado")
+            linkToDashboard();  
         }
         
-        console.log("Tentativa de login");
-        
-        authenticateUser();    
-        
-    })
-}
-
-passwordRegisterForm.addEventListener("input", (e) =>{
-    validatePassword(passwordRegisterForm.value);   
-})
+    });
+};
 
 if(registerForm){
+    passwordRegisterForm.addEventListener("input", (e) =>{
+        validatePassword(passwordRegisterForm.value);   
+    });
+}
+    
+if(registerForm){
     registerForm.addEventListener("submit", (e) =>{     
-        console.log("Click");
         e.preventDefault();
             
         const userData = {
@@ -51,7 +52,7 @@ if(registerForm){
             birthday: birthdateRegisterForm.value,
             password: passwordRegisterForm.value,
             confirmPassword: confirmPasswordRegisterForm.value        
-        }
+        };
             
         if(isRegisterFormEmpty(userData)){
             showEmptyFormErrorMessage();
@@ -61,13 +62,13 @@ if(registerForm){
         if(!validatePassword(userData.password)){
             alert("Senha muito fraca, pensa em outra!");
             return;
-        }
+        };
     
         if(!matchPasswords(userData.password, userData.confirmPassword)){
             alert("Opa, senhas não são iguais, reveja!");
             cleanRegisterPasswordInput();
             return;             
-        }
+        };
 
         validateResgister(userData);
     })
@@ -82,38 +83,43 @@ function isLoginFormEmpty(){
     if (email === "" || password === ""){
         showEmptyFormErrorMessage();
         return true;
-    }
+    };
 
     return false;
-}
-
-function showEmptyFormErrorMessage(){
-    alert ("Opa! Tem campo vazio, não pode. Complete todas as informações, por favor!");
-}
-function showLoginErrorMessage(){
-    alert("Opa, e-mail ou senha invalido! Tente novamente");
-}
+};
 
 function authenticateUser(userData){
-    const email = loginEmail.value;
+    const email = loginEmail.value.trim();
     const password = loginPassword.value;
 
-   if (email === "email@email.com" && password === "12345678"){
-        alert("Login efetuado com sucesso. Voce sera redirecionado");
-        window.location.href ="../pages/dashboard.html"
-   } else {
+    let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const userFound = users.find(user => user.email === email);
 
-        showLoginErrorMessage();
+    if(!userFound){
+        alert("Usuario não encontrado");
+        return false;
+    } else if(userFound.password !== password) {
+        alert("Senha incorreta");
+        return false;
+    }
 
-   }
+    sessionData = {
+        name: userFound.name,
+        email: userFound.email,
+        id: userFound.id
+    };
+
+    localStorage.setItem("usuarioLogado", JSON.stringify(sessionData))
+
+    return true;
+  
 }
 
 /* FUNÇÕES DE CADASTRO */
-
 function isRegisterFormEmpty(userData){
    if (userData.name == "" || userData.email == "" || userData.cpf == "" || userData.password == "" || userData.confirmPassword == ""){
         return true;
-   }
+   };
 
    return false;
 }
@@ -121,7 +127,8 @@ function isRegisterFormEmpty(userData){
 function matchPasswords(p1, p2){
     if(p1 === p2){
         return true
-    }
+    };
+
     return false;
 }
 
@@ -136,7 +143,7 @@ function validateResgister(userData){
 
     localStorage.setItem("usuarios", JSON.stringify(users));
 
-    window.location.href = "login.html";
+    linkToLogin();
 }
 
 function validatePassword(password){
@@ -149,33 +156,50 @@ function validatePassword(password){
        helperLength.classList.add("helper-valid")
     } else {
         helperLength.classList.remove("helper-valid")
-    }
+    };
 
     if(hasNumber){
         helperNumber.classList.add("helper-valid")
     } else {
         helperNumber.classList.remove("helper-valid")
-    }
+    };
 
     if(hasLetter){
         helperLetter.classList.add("helper-valid")
     } else {
         helperLetter.classList.remove("helper-valid")
-    }
+    };
 
     if(hasSpecial){
         helperSpecial.classList.add("helper-valid")
     } else {
         helperSpecial.classList.remove("helper-valid")
-    }
+    };
 
-    return isLengthValid && hasLetter && hasNumber && hasSpecial
+    return isLengthValid && hasLetter && hasNumber && hasSpecial;
 }  
  
 /* OUTRAS FUNÇÕES */
-
 function cleanRegisterPasswordInput(){
     passwordRegisterForm.value = "";
     confirmPasswordRegisterForm.value = "";
     passwordRegisterForm.focus();
 }
+
+/*REDIRECIONADORES */
+function linkToDashboard(){
+    window.location.href = "dashboard.html"
+}
+
+function linkToLogin(){
+    window.location.href = "login.html"
+}
+
+/* FUNÇÕES DE ALERTAS */
+function showEmptyFormErrorMessage(){
+    alert ("Opa! Tem campo vazio, não pode. Complete todas as informações, por favor!");
+};
+
+function showLoginErrorMessage(){
+    alert("Opa, e-mail ou senha invalido! Tente novamente");
+};
