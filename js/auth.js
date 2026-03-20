@@ -11,6 +11,11 @@ const birthdateRegisterForm = document.querySelector("#birthdate");
 const passwordRegisterForm = document.querySelector("#password");
 const confirmPasswordRegisterForm = document.querySelector("#password_confirm");
 
+const helperLength = document.getElementById("password-length");
+const helperNumber = document.getElementById("password-number");
+const helperLetter = document.getElementById("password-letter");
+const helperSpecial = document.getElementById("password-special-caracter");
+
 
 /*EVENT LISTENERS*/
 if(loginForm){
@@ -27,7 +32,12 @@ if(loginForm){
         authenticateUser();    
         
     })
+
 }
+
+passwordRegisterForm.addEventListener("input", (e) =>{
+    validatePassword(passwordRegisterForm.value);   
+})
 
 if(registerForm){
     registerForm.addEventListener("submit", (e) =>{     
@@ -52,8 +62,7 @@ if(registerForm){
             passwordRegisterForm.value = "";
             confirmPasswordRegisterForm.value = "";
             passwordRegisterForm.focus();
-            return;
-                       
+            return;             
         }
 
         validateResgister();
@@ -117,4 +126,31 @@ function matchPasswords(p1, p2){
 function validateResgister(){
     alert("Cadastro realizado com sucesso! Bem-vindo ao Vacinei.");
     window.location.href = "login.html";
+}
+
+function validatePassword(password){
+    if (password.length >= 8){
+       helperLength.classList.add("helper-valid")
+    } else {
+        helperLength.classList.remove("helper-valid")
+    }
+
+    if(/[0-9]/.test(password)){
+        helperNumber.classList.add("helper-valid")
+    } else {
+        helperNumber.classList.remove("helper-valid")
+    }
+
+    if(/[a-zA-Z]/.test(password)){
+        helperLetter.classList.add("helper-valid")
+    } else {
+        helperLetter.classList.remove("helper-valid")
+    }
+
+    if(/[!@#$%^&*]/.test(password)){
+        helperSpecial.classList.add("helper-valid")
+    } else {
+        helperSpecial.classList.remove("helper-valid")
+    }
+
 }
