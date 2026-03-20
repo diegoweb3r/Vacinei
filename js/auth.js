@@ -17,6 +17,7 @@ const helperLetter = document.getElementById("password-letter");
 const helperSpecial = document.getElementById("password-special-caracter");
 
 
+
 /*EVENT LISTENERS*/
 if(loginForm){
 
@@ -44,9 +45,10 @@ if(registerForm){
         e.preventDefault();
             
         const userData = {
-            name: nameRegisterForm.value.trim(),
+            userName: nameRegisterForm.value.trim(),
             email: emailRegisterForm.value.trim(),
-            cpf: cpfRegisterForm.value.trim()   ,
+            cpf: cpfRegisterForm.value.trim(),
+            birthday: birthdateRegisterForm.value,
             password: passwordRegisterForm.value,
             confirmPassword: confirmPasswordRegisterForm.value        
         }
@@ -67,7 +69,7 @@ if(registerForm){
             return;             
         }
 
-        validateResgister();
+        validateResgister(userData);
     })
 }   
 
@@ -92,7 +94,7 @@ function showLoginErrorMessage(){
     alert("Opa, e-mail ou senha invalido! Tente novamente");
 }
 
-function authenticateUser(){
+function authenticateUser(userData){
     const email = loginEmail.value;
     const password = loginPassword.value;
 
@@ -123,17 +125,26 @@ function matchPasswords(p1, p2){
     return false;
 }
 
-function validateResgister(){
+function validateResgister(userData){
     alert("Cadastro realizado com sucesso! Bem-vindo ao Vacinei.");
+
+    let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    userData.id = Date.now();
+
+    users.push(userData);
+
+    localStorage.setItem("usuarios", JSON.stringify(users));
+
     window.location.href = "login.html";
 }
 
 function validatePassword(password){
-
     const isLengthValid = password.length >= 8;
     const hasNumber = /[0-9]/.test(password);
     const hasLetter = /[a-zA-Z]/.test(password);
     const hasSpecial = /[!@#$%^&*]/.test(password);
+
     if (isLengthValid){
        helperLength.classList.add("helper-valid")
     } else {
