@@ -32,7 +32,6 @@ if(loginForm){
         authenticateUser();    
         
     })
-
 }
 
 passwordRegisterForm.addEventListener("input", (e) =>{
@@ -41,35 +40,36 @@ passwordRegisterForm.addEventListener("input", (e) =>{
 
 if(registerForm){
     registerForm.addEventListener("submit", (e) =>{     
-            console.log("Click");
-            e.preventDefault();
+        console.log("Click");
+        e.preventDefault();
             
-            const userData = {
-                name: nameRegisterForm.value.trim(),
-                email: emailRegisterForm.value.trim(),
-                cpf: cpfRegisterForm.value.trim()   ,
-                password: passwordRegisterForm.value,
-                confirmPassword: confirmPasswordRegisterForm.value        
-            }
+        const userData = {
+            name: nameRegisterForm.value.trim(),
+            email: emailRegisterForm.value.trim(),
+            cpf: cpfRegisterForm.value.trim()   ,
+            password: passwordRegisterForm.value,
+            confirmPassword: confirmPasswordRegisterForm.value        
+        }
             
-            if(isRegisterFormEmpty(userData)){
-                showEmptyFormErrorMessage();
-                return
+        if(isRegisterFormEmpty(userData)){
+            showEmptyFormErrorMessage();
+            return
         };
-        
+
+        if(!validatePassword(userData.password)){
+            alert("Senha muito fraca, pensa em outra!");
+            return;
+        }
+    
         if(!matchPasswords(userData.password, userData.confirmPassword)){
             alert("Opa, senhas não são iguais, reveja!");
-            passwordRegisterForm.value = "";
-            confirmPasswordRegisterForm.value = "";
-            passwordRegisterForm.focus();
+            cleanRegisterPasswordInput();
             return;             
         }
 
         validateResgister();
     })
 }   
-
-
 
 /* FUNÇÕES DE LOGIN */
 function isLoginFormEmpty(){
@@ -129,28 +129,42 @@ function validateResgister(){
 }
 
 function validatePassword(password){
-    if (password.length >= 8){
+
+    const isLengthValid = password.length >= 8;
+    const hasNumber = /[0-9]/.test(password);
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasSpecial = /[!@#$%^&*]/.test(password);
+    if (isLengthValid){
        helperLength.classList.add("helper-valid")
     } else {
         helperLength.classList.remove("helper-valid")
     }
 
-    if(/[0-9]/.test(password)){
+    if(hasNumber){
         helperNumber.classList.add("helper-valid")
     } else {
         helperNumber.classList.remove("helper-valid")
     }
 
-    if(/[a-zA-Z]/.test(password)){
+    if(hasLetter){
         helperLetter.classList.add("helper-valid")
     } else {
         helperLetter.classList.remove("helper-valid")
     }
 
-    if(/[!@#$%^&*]/.test(password)){
+    if(hasSpecial){
         helperSpecial.classList.add("helper-valid")
     } else {
         helperSpecial.classList.remove("helper-valid")
     }
 
+    return isLengthValid && hasLetter && hasNumber && hasSpecial
+}  
+ 
+/* OUTRAS FUNÇÕES */
+
+function cleanRegisterPasswordInput(){
+    passwordRegisterForm.value = "";
+    confirmPasswordRegisterForm.value = "";
+    passwordRegisterForm.focus();
 }
