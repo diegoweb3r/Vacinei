@@ -48,7 +48,7 @@ if(registerForm){
         const userData = {
             userName: nameRegisterForm.value.trim(),
             email: emailRegisterForm.value.trim(),
-            cpf: cpfRegisterForm.value.trim(),
+            cpf: cpfRegisterForm.value,
             birthday: birthdateRegisterForm.value,
             password: passwordRegisterForm.value,
             confirmPassword: confirmPasswordRegisterForm.value        
@@ -93,7 +93,7 @@ function authenticateUser(userData){
     const password = loginPassword.value;
 
     let users = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const userFound = users.find(user => user.email === email);
+    const emailExists = users.find(user => user.email === userData.email);
 
     if(!userFound){
         alert("Usuario não encontrado");
@@ -106,6 +106,7 @@ function authenticateUser(userData){
     sessionData = {
         name: userFound.name,
         email: userFound.email,
+        cpf: userFound.cpf,
         id: userFound.id
     };
 
@@ -133,16 +134,30 @@ function matchPasswords(p1, p2){
 }
 
 function validateResgister(userData){
-    alert("Cadastro realizado com sucesso! Bem-vindo ao Vacinei.");
-
     let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    const email = emailRegisterForm.value;
+    const cpf = cpfRegisterForm.value;
+    const emailExists = users.find(user => user.email === userData.email);
+
+    if(emailExists){
+        alert("Opa! email ja cadastrado, utilize outro ou recupe sua senha");
+        return;
+    }
+    
+    const cpfExists = users.find(user => user.cpf === userData.cpf);
+    if (cpfExists){
+        alert("Opa! CPF ja cadastrado, utilize outro ou recupe sua senha");
+        return;
+    }
 
     userData.id = Date.now();
 
     users.push(userData);
 
     localStorage.setItem("usuarios", JSON.stringify(users));
-
+    
+    alert("Cadastro realizado com sucesso! Bem-vindo ao Vacinei.");
     linkToLogin();
 }
 
