@@ -117,6 +117,17 @@ a{
     border-left: 2px solid var(--primary-color);
 }
 
+.helper-invalid{
+    color: var(--red-primary);
+    border-left: 2px solid var(--red-secondary);
+}
+
+.helper-valid{
+    color: var(--primary-color);
+    
+}
+
+
 input[type="file"]{
     padding: 0 !important;
 }
