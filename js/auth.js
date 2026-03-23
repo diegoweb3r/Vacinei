@@ -16,6 +16,9 @@ const helperNumber = document.getElementById("password-number");
 const helperLetter = document.getElementById("password-letter");
 const helperSpecial = document.getElementById("password-special-caracter");
 
+/*FUNÇÕES IMEDIATAS*/
+setUpBirthdayDate();
+
 
 
 /*EVENT LISTENERS*/
@@ -48,13 +51,13 @@ if(registerForm){
         const userData = {
             userName: nameRegisterForm.value.trim(),
             email: emailRegisterForm.value.trim(),
-            cpf: cpfRegisterForm.value,
+            cpf: cpfRegisterForm.value.replace(/\D/g, ""),
             birthday: birthdateRegisterForm.value,
             password: passwordRegisterForm.value,
             confirmPassword: confirmPasswordRegisterForm.value        
         };
             
-        if(isRegisterFormEmpty(userData)){
+        if(isRegisterFormEmpty(userData.userName)){
             showEmptyFormErrorMessage();
             return
         };
@@ -93,7 +96,7 @@ function authenticateUser(userData){
     const password = loginPassword.value;
 
     let users = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const emailExists = users.find(user => user.email === userData.email);
+    const userFound = users.find(user => user.email === userData.email);
 
     if(!userFound){
         alert("Usuario não encontrado");
@@ -136,22 +139,26 @@ function matchPasswords(p1, p2){
 function validateResgister(userData){
     let users = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    const email = emailRegisterForm.value;
-    const cpf = cpfRegisterForm.value;
     const emailExists = users.find(user => user.email === userData.email);
+    const cpfExists = users.find(user => user.cpf === userData.cpf);
+    const age = calculateAge(userData.birthday);
 
     if(emailExists){
         alert("Opa! email ja cadastrado, utilize outro ou recupe sua senha");
         return;
     }
-    
-    const cpfExists = users.find(user => user.cpf === userData.cpf);
+ 
     if (cpfExists){
         alert("Opa! CPF ja cadastrado, utilize outro ou recupe sua senha");
         return;
     }
 
     userData.id = Date.now();
+
+    if(age < 16 || age > 120) {
+        alert("Opa, certeza que essa idade esta certa? Voce precisa ter mais de 16 anos para usar nosso programa");
+        return
+    }
 
     users.push(userData);
 
@@ -193,7 +200,9 @@ function validatePassword(password){
 
     return isLengthValid && hasLetter && hasNumber && hasSpecial;
 }  
- 
+
+
+
 /* OUTRAS FUNÇÕES */
 function cleanRegisterPasswordInput(){
     passwordRegisterForm.value = "";
@@ -218,3 +227,31 @@ function showEmptyFormErrorMessage(){
 function showLoginErrorMessage(){
     alert("Opa, e-mail ou senha invalido! Tente novamente");
 };
+
+function calculateAge(birthdayValue){
+    const today = new Date();
+    const birthday = new Date(birthdateRegisterForm.value);
+
+    let age = today.getFullYear() - birthday.getFullYear();
+    const monthDiff = today.getMonth() - birthday.getMonth();
+
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() <  birthday.getDate())){
+        age--;
+    }
+
+    return age;
+}
+
+function setUpBirthdayDate(){
+    if(birthdateRegisterForm){
+        const today = new Date();
+
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, 0);
+        const day = String(today.getDate()).padStart(2, 0);
+
+        const formatedDate = `${year}-${month}-${day}`;
+
+        birthdateRegisterForm.max = formatedDate;
+    }
+}
