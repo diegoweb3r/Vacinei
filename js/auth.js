@@ -96,7 +96,7 @@ function authenticateUser(userData){
     const password = loginPassword.value;
 
     let users = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const userFound = users.find(user => user.email === userData.email);
+    const userFound = users.find(user => user && user.email === email);
 
     if(!userFound){
         alert("Usuario não encontrado");
