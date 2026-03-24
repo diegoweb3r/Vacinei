@@ -107,7 +107,7 @@ function authenticateUser(userData){
     }
 
     sessionData = {
-        name: userFound.name,
+        userName: userFound.userName,
         email: userFound.email,
         cpf: userFound.cpf,
         id: userFound.id
@@ -121,7 +121,7 @@ function authenticateUser(userData){
 
 /* FUNÇÕES DE CADASTRO */
 function isRegisterFormEmpty(userData){
-   if (userData.name == "" || userData.email == "" || userData.cpf == "" || userData.password == "" || userData.confirmPassword == ""){
+   if (userData.userName == "" || userData.email == "" || userData.cpf == "" || userData.password == "" || userData.confirmPassword == ""){
         return true;
    };
 
