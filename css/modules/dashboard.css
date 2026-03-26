@@ -142,7 +142,7 @@ input:focus {
     width: 50px;
 }
 
-.vaccines{
+.vaccines-empty{
     width: 80%;
     height: 30vh;
     display: flex;
@@ -153,7 +153,16 @@ input:focus {
     gap: 2rem;*/
 }
 
+.vaccines-grid{
+    width: 80%;
+    min-height: 30vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
 .vaccines__card__container{
+    height: 15vh;
     border: 1px solid var(--text-main);
     border-radius: var(--border-radius);
     padding: 1rem;
