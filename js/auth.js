@@ -54,7 +54,8 @@ if(registerForm){
             cpf: cpfRegisterForm.value.replace(/\D/g, ""),
             birthday: birthdateRegisterForm.value,
             password: passwordRegisterForm.value,
-            confirmPassword: confirmPasswordRegisterForm.value        
+            confirmPassword: confirmPasswordRegisterForm.value,
+            vaccines: []       
         };
             
         if(isRegisterFormEmpty(userData.userName)){

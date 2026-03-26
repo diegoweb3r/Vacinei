@@ -55,20 +55,20 @@
                 <h2>Dados da Vacina</h2>
             </div>
 
-                <form action="#" method="POST" class="auth-form">
+                <form id="form-Vaccines" class="auth-form">
                 <div class="input-group">
                     <label for="vaccine-name">Nome</label>
-                    <input type="text" id="vaccine-name">
+                    <input type="text" id="vaccine-name" required>
                 </div>
                 
                <div class="input-row">
                     <div class="input-group">
                         <label for="vacina-data">Data da Aplicação</label>
-                        <input type="date" id="vacina-data">
+                        <input type="date" id="vacina-data" required>
                     </div>
                     <div class="input-group">
                         <label for="vacina-dose">Dose</label>
-                        <select id="vacina-dose" class="custom-select">
+                        <select id="vacina-dose" class="custom-select" required>
                             <option value="unica">Dose Única</option>
                             <option value="1">1ª Dose</option>
                             <option value="2">2ª Dose</option>
@@ -86,7 +86,7 @@
         </section>
             <div class="bttn__container">
                 <a href="./dashboard.html" class="delete-vaccine bttn delete">Descartar</a>
-                <button class="save-vaccine bttn">Salvar</button>
+                <button id="salve-button" class="save-vaccine bttn">Salvar</button>
             </div>
         </form>
         </main>
@@ -98,5 +98,9 @@
       </p>
       <p class="footer__text">Controle de vacinas simplificado.</p>
     </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/vacines.js"></script>
   </body>
 </html>

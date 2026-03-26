@@ -1,17 +1,20 @@
 /*DECLARAÇÕES*/
 const logoutButton = document.getElementById("logoutButton");
+const logoutButtonLink = document.getElementById("logout-button-link");
 const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 const usuarioLogadoName = document.querySelector(".profile-inf__name");
 
-if(usuarioLogado && usuarioLogadoName){
-    completeDashboardUser();
-} else if (!usuarioLogado){
-    linkToLogin();
-}
+isUserLogged();
 
 /* EVENT LISTENER */
 if(logoutButton){
     logoutButton.addEventListener("click", () =>{
+        logout()
+    });
+}
+
+if(logoutButtonLink){
+    logoutButtonLink.addEventListener("click", () =>{
         logout()
     });
 }
@@ -33,3 +36,12 @@ function completeDashboardUser(){
 
 }
 
+
+
+function isUserLogged(){
+    if(usuarioLogado && usuarioLogadoName){
+        completeDashboardUser();
+    } else if (!usuarioLogado){
+        linkToLogin();
+    }   
+}
