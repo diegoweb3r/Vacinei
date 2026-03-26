@@ -111,7 +111,9 @@ function authenticateUser(userData){
         userName: userFound.userName,
         email: userFound.email,
         cpf: userFound.cpf,
-        id: userFound.id
+        id: userFound.id,
+        password: userFound.password,
+        vaccines: userFound.vaccines
     };
 
     localStorage.setItem("usuarioLogado", JSON.stringify(sessionData))
