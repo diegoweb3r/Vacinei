@@ -34,8 +34,11 @@ function renderVaccines(){
         vaccineContainer.innerHTML = "";
         vaccineContainer.classList.remove("vaccines-empty");
         vaccineContainer.classList.add("vaccines-grid");
-        
+
         usuarioLogado.vaccines.forEach(vaccine =>{
+            console.log(vaccine)
+            const lableText = setVaccineLable(vaccine.vaccineDate);
+            const lable = lableText.toLocaleLowerCase();
             const cardHTML =
             `<article id="vaccines-container" class="vaccines__card__container">
                 <div class="vaccines__card">
@@ -45,7 +48,7 @@ function renderVaccines(){
                     <div class="vaccines__card-text">
                         <div class="vaccines_card-text__name">
                             <h3 class="vaccines__card-text__title">${vaccine.vaccineName}</h3>
-                            <span class="status-badge pending">Aplicada</span>
+                            <span class="status-badge ${lable}">${lableText}</span>
                         </div>
                         
                         <div class="vaccines__card-text__info">

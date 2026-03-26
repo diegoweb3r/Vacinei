@@ -148,9 +148,6 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;*/
 }
 
 .vaccines-grid{

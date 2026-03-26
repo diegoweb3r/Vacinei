@@ -24,6 +24,7 @@ if(formVaccines){
             vaccineDate: vaccineDateToAdd,
             vaccineDose: vaccineDoseToAdd,
             vaccineLote: vaccineLoteToAdd,
+            vaccineLable: setVaccineLable(vaccineDateToAdd),
             id: Date.now()
         } 
 
@@ -46,5 +47,16 @@ if(formVaccines){
 
         alert("Tudo certo!")
     })
+}
+
+function setVaccineLable(vaccineDate){
+    const dateVaccine = new Date(vaccineDate).getTime();
+    const today = Date.now();
+
+    if(dateVaccine > today){
+        return "Pendente"
+    } else {
+        return "Aplicada"
+    }
 
 }
