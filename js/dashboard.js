@@ -36,7 +36,6 @@ function renderVaccines(){
         vaccineContainer.classList.add("vaccines-grid");
 
         usuarioLogado.vaccines.forEach(vaccine =>{
-            console.log(vaccine)
             const lableText = setVaccineLable(vaccine.vaccineDate);
             const lable = lableText.toLocaleLowerCase();
             const cardHTML =
@@ -67,7 +66,6 @@ function renderVaccines(){
 
             vaccineContainer.innerHTML += cardHTML;
        })} else {
-            console.log("Opa, ta vazio")
             const emptyCardHTML = 
             `<article id='empty-slot' class='sections'>
                 <h2>Sem vacinas cadastradas ainda</h2>
@@ -78,6 +76,47 @@ function renderVaccines(){
 }
 
 renderVaccines(); 
+
+
+function renderVaccinesCounter(){
+    const stats = vaccinesCounter();
+    let totalVaccines = document.getElementById("total-vaccines-stats");
+    let appliedVaccines = document.getElementById("applied-vaccines-stats");
+    let pendingVaccines = document.getElementById("pending-vaccines-stats");
+
+    totalVaccines.innerHTML = stats.total;
+    appliedVaccines.innerHTML = stats.applied;
+    pendingVaccines.innerHTML = stats.pending;
+    
+}
+
+function vaccinesCounter(){
+    let totalVaccines = 0;
+    let appliedVaccines = 0;
+    let penddingVaccines = 0;
+
+    const lista = usuarioLogado.vaccines || [];
+
+    lista.forEach(vaccine =>{
+        totalVaccines++;
+
+        const status = setVaccineLable(vaccine.vaccineDate);
+        if(status === "Aplicada"){
+            appliedVaccines++;
+        } else{
+            penddingVaccines++
+        }; 
+    })
+
+     return {
+            total: totalVaccines,
+            applied: appliedVaccines,
+            pending: penddingVaccines
+        }
+}
+
+renderVaccinesCounter();
+
 
 /* OUTRAS FUNÇÕES */
 function logout(){
