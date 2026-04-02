@@ -1,12 +1,9 @@
 /*DECLARAÇÕES*/
 const logoutButton = document.getElementById("logoutButton");
 const logoutButtonLink = document.getElementById("logout-button-link");
-const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 const usuarioLogadoName = document.querySelector(".profile-inf__name");
 
-isUserLogged();
-
-
+checkUserAccess();
 
 /* EVENT LISTENER */
 if(logoutButton){
@@ -38,7 +35,7 @@ function renderVaccines(){
         vaccineContainer.classList.add("vaccines-grid");
 
         usuarioLogado.vaccines.forEach(vaccine =>{
-            const lableText = setVaccineLable(vaccine.vaccineDate);
+            const lableText = setVaccineLabel(vaccine.vaccineDate);
             const lable = lableText.toLocaleLowerCase();
             const cardHTML =
             `<article id="vaccines-container" class="vaccines__card__container">
@@ -76,9 +73,6 @@ function renderVaccines(){
         }
 }
 
-renderVaccines(); 
-
-
 function renderVaccinesCounter(){
     const stats = vaccinesCounter();
     let totalVaccines = document.getElementById("total-vaccines-stats");
@@ -96,30 +90,27 @@ function renderVaccinesCounter(){
 function vaccinesCounter(){
     let totalVaccines = 0;
     let appliedVaccines = 0;
-    let penddingVaccines = 0;
+    let pendingVaccines = 0;
 
-    const lista = usuarioLogado.vaccines || [];
+    const userVaccines = usuarioLogado.vaccines || [];
 
-    lista.forEach(vaccine =>{
+    userVaccines.forEach(vaccine =>{
         totalVaccines++;
 
-        const status = setVaccineLable(vaccine.vaccineDate);
+        const status = setVaccineLabel(vaccine.vaccineDate);
         if(status === "Aplicada"){
             appliedVaccines++;
         } else{
-            penddingVaccines++
+            pendingVaccines++
         }; 
     })
 
      return {
             total: totalVaccines,
             applied: appliedVaccines,
-            pending: penddingVaccines
+            pending: pendingVaccines
         }
 }
-
-renderVaccinesCounter();
-
 
 /* OUTRAS FUNÇÕES */
 function logout(){
@@ -133,10 +124,4 @@ function logout(){
 }
 
 
-function isUserLogged(){
-    if(usuarioLogado && usuarioLogadoName){
-        renderUser();
-    } else if (!usuarioLogado){
-        linkToLogin();
-    }   
-}
+

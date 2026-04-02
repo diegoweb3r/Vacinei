@@ -6,7 +6,7 @@ const vaccineLote = document.getElementById("vacina-lote");
 
 const salveButton = document.getElementById("salve-button");
 
-isUserLogged();
+checkUserAccess();
 
 /* FUNÇÕES */
 
@@ -24,7 +24,7 @@ if(formVaccines){
             vaccineDate: vaccineDateToAdd,
             vaccineDose: vaccineDoseToAdd,
             vaccineLote: vaccineLoteToAdd,
-            vaccineLable: setVaccineLable(vaccineDateToAdd),
+            vaccineLable: setVaccineLabel(vaccineDateToAdd),
             id: Date.now()
         } 
 
@@ -47,15 +47,4 @@ if(formVaccines){
 
         alert("Tudo certo!")
     })
-}
-
-function setVaccineLable(vaccineDate){
-    const dateVaccine = new Date(vaccineDate).getTime();
-    const today = Date.now();
-
-    if(dateVaccine > today){
-        return "Pendente"
-    } else {
-        return "Aplicada"
-    }
 }
