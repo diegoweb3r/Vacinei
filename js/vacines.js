@@ -58,5 +58,4 @@ function setVaccineLable(vaccineDate){
     } else {
         return "Aplicada"
     }
-
 }

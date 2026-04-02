@@ -30,6 +30,8 @@ function renderUser(){
 function renderVaccines(){
     const vaccineContainer = document.getElementById("vaccines-container");
 
+    if (!vaccineContainer) return;
+
     if(usuarioLogado.vaccines.length >= 1){
         vaccineContainer.innerHTML = "";
         vaccineContainer.classList.remove("vaccines-empty");
@@ -65,14 +67,13 @@ function renderVaccines(){
             </article>`
 
             vaccineContainer.innerHTML += cardHTML;
-       })} else {
+        })} else {
             const emptyCardHTML = 
             `<article id='empty-slot' class='sections'>
                 <h2>Sem vacinas cadastradas ainda</h2>
             </article>`;
             vaccineContainer.innerHTML = emptyCardHTML;
-       }
-    
+        }
 }
 
 renderVaccines(); 
@@ -84,6 +85,8 @@ function renderVaccinesCounter(){
     let appliedVaccines = document.getElementById("applied-vaccines-stats");
     let pendingVaccines = document.getElementById("pending-vaccines-stats");
 
+    if (!totalVaccines) return;
+    
     totalVaccines.innerHTML = stats.total;
     appliedVaccines.innerHTML = stats.applied;
     pendingVaccines.innerHTML = stats.pending;
@@ -129,9 +132,7 @@ function logout(){
     
 }
 
-function emptyContainer(){
 
-}
 function isUserLogged(){
     if(usuarioLogado && usuarioLogadoName){
         renderUser();

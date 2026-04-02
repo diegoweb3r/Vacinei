@@ -81,15 +81,13 @@
     color: var(--text-muted);
 }
 
-
 .input-group__container {
-    
     display: flex;
     flex-direction: column;         
 }
 
 .config-buttons__container{
-   position: fixed;
+    position: fixed;
     bottom: 5.5rem;
     right: 2rem;
     width: auto !important; 
@@ -112,5 +110,16 @@
         justify-content: flex-end;
         padding: 1rem 0;
         right: 0;
+    }
+}
+
+@media (max-width: 768px){
+
+    .sections{
+        width: 100%;
+    }
+   
+    .config-buttons__container{
+        position: static;
     }
 }
