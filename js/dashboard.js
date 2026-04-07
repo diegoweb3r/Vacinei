@@ -59,12 +59,15 @@ function renderVaccines(){
                 </div>
                 <div class="vaccine__buttons">
                     <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
+                    <button class="vaccine__buttons__delete" onclick="deleteVaccine(${vaccine.id})" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
                 </div>
             </article>`
 
             vaccineContainer.innerHTML += cardHTML;
         })} else {
+
+            vaccineContainer.classList.remove("vaccines-grid");
+            vaccineContainer.classList.add("vaccines-empty");
             const emptyCardHTML = 
             `<article id='empty-slot' class='sections'>
                 <h2>Sem vacinas cadastradas ainda</h2>
@@ -110,6 +113,21 @@ function vaccinesCounter(){
             applied: appliedVaccines,
             pending: pendingVaccines
         }
+}
+
+function deleteVaccine(id){
+    if(confirm("Voce tem certeza que deseja excluir essa vacina?")){
+        usuarioLogado.vaccines = usuarioLogado.vaccines.filter(v => v.id !== id);
+
+        DB.setLogged(usuarioLogado);
+
+        DB.updateMasterList(usuarioLogado);
+
+        renderVaccines();
+        renderVaccinesCounter();
+
+        alert("Vacina removida")
+    }
 }
 
 /* OUTRAS FUNÇÕES */
