@@ -58,7 +58,7 @@ function renderVaccines(){
                     
                 </div>
                 <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
+                    <button class="vaccine__buttons__edit" onclick="prepareToEditVaccine(${vaccine.id})" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
                     <button class="vaccine__buttons__delete" onclick="deleteVaccine(${vaccine.id})" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
                 </div>
             </article>`
@@ -128,6 +128,11 @@ function deleteVaccine(id){
 
         alert("Vacina removida")
     }
+}
+
+function prepareToEditVaccine(id){
+    sessionStorage.setItem("editId", id);
+    redirectToCadastro();
 }
 
 /* OUTRAS FUNÇÕES */

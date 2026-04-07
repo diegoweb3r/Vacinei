@@ -39,6 +39,10 @@ function redirectToDashboard(){
     window.location.href = "dashboard.html"
 }
 
+function redirectToCadastro(){
+    window.location.href = "formulario-vacina.html"
+}
+
 function calculateAge(birthdayValue){
     const today = new Date();
     const birthday = new Date(birthdateRegisterForm.value);
