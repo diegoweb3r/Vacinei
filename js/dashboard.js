@@ -117,7 +117,7 @@ function logout(){
     const confirmLogout = confirm("Voce realmente deseja sair?");
 
     if (confirmLogout){
-            localStorage.removeItem("usuarioLogado");
+            DB.clearLogged();
             redirectToLogin();
         }
     

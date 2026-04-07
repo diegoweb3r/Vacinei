@@ -97,7 +97,7 @@ function authenticateUser(){
     const email = loginEmail.value.trim();
     const password = loginPassword.value;
 
-    let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let users = DB.getUsers();
     const userFound = users.find(user => user && user.email === email);
 
     if(!userFound){
@@ -108,7 +108,7 @@ function authenticateUser(){
         return false;
     }
 
-    localStorage.setItem("usuarioLogado", JSON.stringify(userFound))
+    DB.setLogged(userFound);
 
     return true;  
 }
@@ -123,7 +123,7 @@ function isRegisterFormEmpty(userData){
 }
 
 function validateRegister(userData){
-    let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let users = DB.getUsers();
 
     const emailExists = users.find(user => user.email === userData.email);
     const cpfExists = users.find(user => user.cpf === userData.cpf);
@@ -148,7 +148,7 @@ function validateRegister(userData){
 
     users.push(userData);
 
-    localStorage.setItem("usuarios", JSON.stringify(users));
+    DB.setUsers(users);
     
     alert("Cadastro realizado com sucesso! Bem-vindo ao Vacinei.");
     redirectToLogin();
@@ -161,15 +161,6 @@ function cleanRegisterPasswordInput(){
     confirmPasswordRegisterForm.value = "";
     passwordRegisterForm.focus();
 }
-/* FUNÇÕES DE ALERTAS */
-function showEmptyFormErrorMessage(){
-    alert ("Opa! Tem campo vazio, não pode. Complete todas as informações, por favor!");
-};
-
-function showLoginErrorMessage(){
-    alert("Opa, e-mail ou senha invalido! Tente novamente");
-};
-
 
 
 function setUpBirthdayDate(){

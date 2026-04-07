@@ -33,17 +33,16 @@ if(formVaccines){
         }
 
         usuarioLogado.vaccines.push(newVaccine);
-        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-
+        DB.setLogged(usuarioLogado);
     
-        const userList = JSON.parse(localStorage.getItem("usuarios"));
+        const userList = DB.getUsers();
         const index = userList.findIndex(u => u.id === usuarioLogado.id);
         
         if(index !== -1){
             userList[index] = usuarioLogado;
         }
 
-        localStorage.setItem("usuarios", JSON.stringify(userList));
+        DB.setUsers(userList);
 
         alert("Tudo certo!")
     })
