@@ -19,7 +19,7 @@ function redirectToDashboard(){
     window.location.href = "dashboard.html"
 }
 
-function calculateAge(){
+function calculateAge(birthdayValue){
     const today = new Date();
     const birthday = new Date(birthdateRegisterForm.value);
 
@@ -80,6 +80,6 @@ function checkUserAccess(){
         renderVaccines();
         renderVaccinesCounter();
     } else if (!usuarioLogado){
-        linkToLogin();
+        redirectToLogin();
     }   
 }

@@ -118,7 +118,7 @@ function logout(){
 
     if (confirmLogout){
             localStorage.removeItem("usuarioLogado");
-            linkToLogin();
+            redirectToLogin();
         }
     
 }

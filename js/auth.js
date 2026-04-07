@@ -16,6 +16,7 @@ const helperNumber = document.getElementById("password-number");
 const helperLetter = document.getElementById("password-letter");
 const helperSpecial = document.getElementById("password-special-caracter");
 
+
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
     setUpBirthdayDate();
@@ -92,7 +93,7 @@ function isLoginFormEmpty(){
     return false;
 };
 
-function authenticateUser(userData){
+function authenticateUser(){
     const email = loginEmail.value.trim();
     const password = loginPassword.value;
 
@@ -107,19 +108,9 @@ function authenticateUser(userData){
         return false;
     }
 
-    sessionData = {
-        userName: userFound.userName,
-        email: userFound.email,
-        cpf: userFound.cpf,
-        id: userFound.id,
-        password: userFound.password,
-        vaccines: userFound.vaccines
-    };
+    localStorage.setItem("usuarioLogado", JSON.stringify(userFound))
 
-    localStorage.setItem("usuarioLogado", JSON.stringify(sessionData))
-
-    return true;
-  
+    return true;  
 }
 
 /* FUNÇÕES DE CADASTRO */
@@ -160,7 +151,7 @@ function validateRegister(userData){
     localStorage.setItem("usuarios", JSON.stringify(users));
     
     alert("Cadastro realizado com sucesso! Bem-vindo ao Vacinei.");
-    linkToLogin();
+    redirectToLogin();
 }
 
 
