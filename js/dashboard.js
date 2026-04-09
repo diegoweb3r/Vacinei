@@ -20,6 +20,12 @@ if(logoutButtonLink){
 
 
 /* FUNÇÕES DASHBOARD */
+
+function goToAddVaccine() {
+    sessionStorage.removeItem("editId");
+    window.location.href = "cadastro-vacina.html";
+}
+
 function renderUser(){
     usuarioLogadoName.innerText = usuarioLogado.userName;
 }

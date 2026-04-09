@@ -6,16 +6,18 @@ const vaccineLote = document.getElementById("vacina-lote");
 const editId = sessionStorage.getItem("editId");
 const salveButton = document.getElementById("salve-button");
 
+
 checkUserAccess();
 
 /* FUNÇÕES */
 
 if(editId){
-    document.querySelector("h2").innerText = "Editar Vacina";
-    salveButton.innerText = "Atualizar Vacina";
+    const titleElement = document.querySelector("h2");
     const vaccineToEdit = usuarioLogado.vaccines.find(v => v.id == editId);
 
-    if(vaccineToEdit){
+    if(titleElement && vaccineToEdit){
+        titleElement.innerText = "Editar Vacina";
+        if (salveButton) salveButton.innerText = "Editar Vacina"
         vaccineName.value = vaccineToEdit.vaccineName;
         vaccineDate.value = vaccineToEdit.vaccineDate;
         vaccineDose.value = vaccineToEdit.vaccineDose;
@@ -27,6 +29,7 @@ if(formVaccines){
     formVaccines.addEventListener("submit", (e) =>{
         e.preventDefault();
 
+        goToAddVaccine();
 
         const vaccineNameToAdd = vaccineName.value;
         const vaccineDateToAdd = vaccineDate.value;
@@ -44,10 +47,13 @@ if(formVaccines){
 
         if(editId){
             const index = usuarioLogado.vaccines.findIndex(v => v.id == editId);
+
             if (index !== -1) {
                 usuarioLogado.vaccines[index] = vaccineData;
             }
+
             sessionStorage.removeItem("editId");
+
         } else {
             if (!usuarioLogado.vaccines) usuarioLogado.vaccines = [];
             usuarioLogado.vaccines.push(vaccineData);
