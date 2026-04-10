@@ -117,6 +117,17 @@ a{
     border-left: 2px solid var(--primary-color);
 }
 
+.helper-invalid{
+    color: var(--red-primary);
+    border-left: 2px solid var(--red-secondary);
+}
+
+.helper-valid{
+    color: var(--primary-color);
+    
+}
+
+
 input[type="file"]{
     padding: 0 !important;
 }
@@ -182,12 +193,12 @@ input:checked + .slider:before {
 }
 
 /* Badges */
-.applied{
+.aplicada{
     border: 1px solid var(--primary-light);
     color: var(--primary-color);
 }
 
-.pending{
+.pendente{
     border: 1px solid var(--yellow-primary);
     color: var(--yellow-secondary);
 }
