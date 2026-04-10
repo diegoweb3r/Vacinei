@@ -29,6 +29,18 @@ if(formVaccines){
     formVaccines.addEventListener("submit", (e) =>{
         e.preventDefault();
 
+        if(vaccineName.value.trim() === "" || vaccineDate.vaccineData === ""){
+            alert("Por favor, preenhca o nome e data da vacina!");
+            return;
+        }
+
+        if(isDateInFuture(vaccineDate.vaccineData)){
+            alert("A data nao pode ser no futuro");
+            return;
+
+        }
+
+
         goToAddVaccine();
 
         const vaccineNameToAdd = vaccineName.value;

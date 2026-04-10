@@ -1,3 +1,4 @@
+// BANCO DE DADOS
 const DB = {
     getUsers: () => JSON.parse(localStorage.getItem("usuarios")) || [],
     setUsers: (users) => localStorage.setItem("usuarios", JSON.stringify(users)),
@@ -20,6 +21,7 @@ const DB = {
 
 const usuarioLogado = DB.getLogged();
 
+//
 function setVaccineLabel(vaccineDate){
     const dateVaccine = new Date(vaccineDate).getTime();
     const today = Date.now();
@@ -31,6 +33,7 @@ function setVaccineLabel(vaccineDate){
     }
 }
 
+// REDIRECTS
 function redirectToLogin(){
     window.location.href = "login.html"
 }
@@ -42,6 +45,7 @@ function redirectToDashboard(){
 function redirectToCadastro(){
     window.location.href = "formulario-vacina.html"
 }
+
 
 function calculateAge(birthdayValue){
     const today = new Date();
@@ -116,3 +120,11 @@ function showEmptyFormErrorMessage(){
 function showLoginErrorMessage(){
     alert("Opa, e-mail ou senha invalido! Tente novamente");
 };
+
+//
+const isDateInFuture = (dateString) =>{
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const inputDate = new Date(dateString);
+    return inputDate > today;
+}
