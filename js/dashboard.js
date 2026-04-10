@@ -57,7 +57,7 @@ function renderVaccines(){
                         
                         <div class="vaccines__card-text__info">
                             <p class="vaccines__card-text__info__dose">${vaccine.vaccineDose}</p>
-                            <p class="vaccines_card-text__info__date">${vaccine.vaccineDate}</p>
+                            <p class="vaccines_card-text__info__date">${formateDateToBR(vaccine.vaccineDate)}</p>
                             <p class="vaccines__card-text__info__lote">${vaccine.vaccineLote}</p>
                         </div>
                     </div>

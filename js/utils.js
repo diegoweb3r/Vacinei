@@ -121,10 +121,20 @@ function showLoginErrorMessage(){
     alert("Opa, e-mail ou senha invalido! Tente novamente");
 };
 
-//
+//FUNÇÕES DE DATA
 const isDateInFuture = (dateString) =>{
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const inputDate = new Date(dateString);
     return inputDate > today;
+}
+
+function formateDateToBR(dateString){
+    if(!dateString){
+        return;
+    }
+    
+    const vaccineDateParts = dateString.split("-");
+
+    return `${vaccineDateParts[2]}/${vaccineDateParts[1]}/${vaccineDateParts[0]}`; 
 }

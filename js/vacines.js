@@ -37,7 +37,6 @@ if(formVaccines){
         if(isDateInFuture(vaccineDate.vaccineData)){
             alert("A data nao pode ser no futuro");
             return;
-
         }
 
 
