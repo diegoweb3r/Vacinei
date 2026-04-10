@@ -1,3 +1,4 @@
+
 // BANCO DE DADOS
 const DB = {
     getUsers: () => JSON.parse(localStorage.getItem("usuarios")) || [],
@@ -137,4 +138,23 @@ function formateDateToBR(dateString){
     const vaccineDateParts = dateString.split("-");
 
     return `${vaccineDateParts[2]}/${vaccineDateParts[1]}/${vaccineDateParts[0]}`; 
+}
+
+//FUNÇÕES DE FILTRO
+function filterByStatus(status){
+    const all = usuarioLogado.vaccines || [];
+
+    if (status === 'all'){
+        renderVaccines(all);
+
+    } else {
+            const filtered = all.filter(v => {
+            const label = setVaccineLabel(v.vaccineDate);
+            return label.toLowerCase() === status.toLowerCase();
+        })
+
+        renderVaccines(filtered);
+
+    }
+    
 }

@@ -30,17 +30,17 @@ function renderUser(){
     usuarioLogadoName.innerText = usuarioLogado.userName;
 }
 
-function renderVaccines(){
+function renderVaccines(vaccinesList = usuarioLogado.vaccines){
     const vaccineContainer = document.getElementById("vaccines-container");
 
     if (!vaccineContainer) return;
 
-    if(usuarioLogado.vaccines.length >= 1){
+    if(vaccinesList && vaccinesList.length > 0){
         vaccineContainer.innerHTML = "";
         vaccineContainer.classList.remove("vaccines-empty");
         vaccineContainer.classList.add("vaccines-grid");
 
-        usuarioLogado.vaccines.forEach(vaccine =>{
+        vaccinesList.forEach(vaccine =>{
             const lableText = setVaccineLabel(vaccine.vaccineDate);
             const lable = lableText.toLocaleLowerCase();
             const cardHTML =
@@ -71,7 +71,7 @@ function renderVaccines(){
 
             vaccineContainer.innerHTML += cardHTML;
         })} else {
-
+            vaccineContainer.innerHTML = "";
             vaccineContainer.classList.remove("vaccines-grid");
             vaccineContainer.classList.add("vaccines-empty");
             const emptyCardHTML = 

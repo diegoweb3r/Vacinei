@@ -79,9 +79,9 @@
                     <input class="search-filter__input" type="text" name="vaccine-search" id="vaccine-search" placeholder="Buscar vacina">
                 </form>
                 <div class="search-filter__container__filters">
-                    <button class="search-filter__filter__all search-button">Todas</button>
-                    <button class="search-filter__filter__apllied search-button">Aplicadas</button>
-                    <button class="search-filter__filter__pending search-button">Pendentes</button>
+                    <button onclick="filterByStatus('all')" class="search-filter__filter__all search-button">Todas</button>
+                    <button onclick="filterByStatus('Aplicada')" class="search-filter__filter__apllied search-button">Aplicadas</button>
+                    <button onclick="filterByStatus('Pendente')" class="search-filter__filter__pending search-button">Pendentes</button>
                 </div>
         </div>
             <div class="search-filter__add">
