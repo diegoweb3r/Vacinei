@@ -3,6 +3,8 @@ const logoutButton = document.getElementById("logoutButton");
 const logoutButtonLink = document.getElementById("logout-button-link");
 const usuarioLogadoName = document.querySelector(".profile-inf__name");
 
+const searchInput = document.getElementById("vaccine-search");
+
 checkUserAccess();
 
 /* EVENT LISTENER */
@@ -16,6 +18,10 @@ if(logoutButtonLink){
     logoutButtonLink.addEventListener("click", () =>{
         logout()
     });
+}
+
+if(searchInput){
+    searchInput.addEventListener("input", handleSearch)
 }
 
 
@@ -44,7 +50,7 @@ function renderVaccines(vaccinesList = usuarioLogado.vaccines){
             const lableText = setVaccineLabel(vaccine.vaccineDate);
             const lable = lableText.toLocaleLowerCase();
             const cardHTML =
-            `<article id="vaccines-container" class="vaccines__card__container">
+            `<article  class="vaccines__card__container">
                 <div class="vaccines__card">
                     <div class="vaccines__card-img">
                         <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
@@ -135,6 +141,21 @@ function deleteVaccine(id){
         alert("Vacina removida")
     }
 }
+
+function handleSearch(e){
+  e.preventDefault();
+
+  const searchInput = document.getElementById("vaccine-search");
+  const searchTerm = searchInput.value.toLowerCase().trim();
+
+  const allVaccines = document.querySelectorAll(".vaccines__card__container");
+
+  allVaccines.forEach((vaccine) => {
+    const titleText = vaccine.querySelector(".vaccines_card-text__name").textContent.toLowerCase();
+    vaccine.style.display = titleText.includes(searchTerm) ? "flex" : "none";
+  });
+}
+
 
 function prepareToEditVaccine(id){
     sessionStorage.setItem("editId", id);
