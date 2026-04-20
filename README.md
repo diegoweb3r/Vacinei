@@ -23,8 +23,10 @@ Este projeto faz parte da minha jornada de especialização em tecnologia, unind
 - [🟢] Website responsivo
 - [🟢] Tela de cadastro de usuario
 - [🟢] Tela de configurações
-- [🔴] CRUD de vacinas
+- [🟢] CRUD de vacinas
 - [🔴] CRUD Usuarios
+- [🔴] Modo escuro
+- [🟢] Pesquisa e Filtro
 ---
 
 ### 👤 Autor
