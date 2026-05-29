@@ -41,7 +41,7 @@
                 <ul>
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../index.html#features">Funcionalidades</a></li>
-                    <li><a href="../index.html" class="bttn delete">LOGOUT</a></li>
+                    <li><a class="bttn delete" id="logoutButton">LOGOUT</a></li>
                 </ul>
             </nav>
         </header>
@@ -49,26 +49,26 @@
         <section id="profile-menu">
             <div class="profile-inf">
                 <img class="profile-inf__picture" src="../assets/images/pessoas.png" alt="icone de uma pessoa sem foto">
-                <p class="profile-inf__name">Diego Felipe Weber</p>
+                <p class="profile-inf__name"></p>
             </div>
             
             <div class="vaccines-menu">
                 <div class="vaccines-menu__inf">
                     <p class="vaccines-menu__inf__name">Total de vacinas</p>
-                    <p class="vaccines-menu__inf__number">5</p>
+                    <p id="total-vaccines-stats" class="vaccines-menu__inf__number">0</p>
                 </div>
                 <div class="vaccines-menu__inf">
                     <p class="vaccines-menu__inf__name">Aplicadas</p>
-                    <p class="vaccines-menu__inf__number">4</p>
+                    <p id="applied-vaccines-stats" class="vaccines-menu__inf__number">0</p>
                 </div>
                 <div class="vaccines-menu__inf">
                     <p class="vaccines-menu__inf__name">Pendentes</p>
-                    <p class="vaccines-menu__inf__number">1</p>
+                    <p id="pending-vaccines-stats" class="vaccines-menu__inf__number">0</p>
                 </div>
             </div>
             <div class="profile-config">
                 <a href="./configuracoes.html">Configurações</a>
-                <a href="../index.html">Logout</a>
+                <a id="logout-button-link">Logout</a>
             </div>
         </section>
     
@@ -79,166 +79,22 @@
                     <input class="search-filter__input" type="text" name="vaccine-search" id="vaccine-search" placeholder="Buscar vacina">
                 </form>
                 <div class="search-filter__container__filters">
-                    <button class="search-filter__filter__all search-button">Todas</button>
-                    <button class="search-filter__filter__apllied search-button">Aplicadas</button>
-                    <button class="search-filter__filter__pending search-button">Pendentes</button>
+                    <button onclick="filterByStatus('all')" class="search-filter__filter__all search-button">Todas</button>
+                    <button onclick="filterByStatus('Aplicada')" class="search-filter__filter__apllied search-button">Aplicadas</button>
+                    <button onclick="filterByStatus('Pendente')" class="search-filter__filter__pending search-button">Pendentes</button>
                 </div>
         </div>
             <div class="search-filter__add">
-                    <a href="../pages/formulario-vacina.html" class="search-filter__add__button bttn">Adicionar</a>
+                    <a href="../pages/formulario-vacina.html" onclick="goToAddVaccine()" class="search-filter__add__button bttn">Adicionar</a>
             </div>
             
         </section>
 
-        <section class="vaccines">
-               <article class="vaccines__card__container">
-                <div class="vaccines__card">
-                    <div class="vaccines__card-img">
-                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
-                    </div>
-                    <div class="vaccines__card-text">
-                        <div class="vaccines_card-text__name">
-                            <h3 class="vaccines__card-text__title">COVID</h3>
-                            <span class="status-badge pending">Aplicada</span>
-                        </div>
-                        
-                        <div class="vaccines__card-text__info">
-                            <p class="vaccines__card-text__info__dose">1 dose</p>
-                            <p class="vaccines_card-text__info__date">01/01/2026</p>
-                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
-                </div>
+        <section id="vaccines-container" class="vaccines-empty">
+            <article id="empty-slot" class="sections">
+                <h2>Sem vacinas cadastradas ainda</h2>
             </article>
-
-
-                 <article class="vaccines__card__container">
-                <div class="vaccines__card">
-                    <div class="vaccines__card-img">
-                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
-                    </div>
-                    <div class="vaccines__card-text">
-                        <div class="vaccines_card-text__name">
-                            <h3 class="vaccines__card-text__title">COVID</h3>
-                            <span class="status-badge pending">Aplicada</span>
-                        </div>
-                        
-                        <div class="vaccines__card-text__info">
-                            <p class="vaccines__card-text__info__dose">1 dose</p>
-                            <p class="vaccines_card-text__info__date">01/01/2026</p>
-                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
-                </div>
-            </article>
-                 <article class="vaccines__card__container">
-                <div class="vaccines__card">
-                    <div class="vaccines__card-img">
-                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
-                    </div>
-                    <div class="vaccines__card-text">
-                        <div class="vaccines_card-text__name">
-                            <h3 class="vaccines__card-text__title">COVID</h3>
-                            <span class="status-badge pending">Aplicada</span>
-                        </div>
-                        
-                        <div class="vaccines__card-text__info">
-                            <p class="vaccines__card-text__info__dose">1 dose</p>
-                            <p class="vaccines_card-text__info__date">01/01/2026</p>
-                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
-                </div>
-            </article>
-                 <article class="vaccines__card__container">
-                <div class="vaccines__card">
-                    <div class="vaccines__card-img">
-                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
-                    </div>
-                    <div class="vaccines__card-text">
-                        <div class="vaccines_card-text__name">
-                            <h3 class="vaccines__card-text__title">COVID</h3>
-                            <span class="status-badge pending">Aplicada</span>
-                        </div>
-                        
-                        <div class="vaccines__card-text__info">
-                            <p class="vaccines__card-text__info__dose">1 dose</p>
-                            <p class="vaccines_card-text__info__date">01/01/2026</p>
-                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
-                </div>
-            </article>
-                 <article class="vaccines__card__container">
-                <div class="vaccines__card">
-                    <div class="vaccines__card-img">
-                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
-                    </div>
-                    <div class="vaccines__card-text">
-                        <div class="vaccines_card-text__name">
-                            <h3 class="vaccines__card-text__title">COVID</h3>
-                            <span class="status-badge pending">Aplicada</span>
-                        </div>
-                        
-                        <div class="vaccines__card-text__info">
-                            <p class="vaccines__card-text__info__dose">1 dose</p>
-                            <p class="vaccines_card-text__info__date">01/01/2026</p>
-                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
-                </div>
-            </article>
-                 <article class="vaccines__card__container">
-                <div class="vaccines__card">
-                    <div class="vaccines__card-img">
-                        <img class="vaccines__card-img-img" src="../assets/images/vacina.png" alt="icone de vacina">
-                    </div>
-                    <div class="vaccines__card-text">
-                        <div class="vaccines_card-text__name">
-                            <h3 class="vaccines__card-text__title">COVID</h3>
-                            <span class="status-badge applied">Aplicada</span>
-                        </div>
-                        
-                        <div class="vaccines__card-text__info">
-                            <p class="vaccines__card-text__info__dose">1 dose</p>
-                            <p class="vaccines_card-text__info__date">01/01/2026</p>
-                            <p class="vaccines__card-text__info__lote">Lote FP5412</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vaccine__buttons">
-                    <button class="vaccine__buttons__edit" aria-label="Editar vacina"><img src="../assets/images/edit.png" alt="icone de editar"></button>
-                    <button class="vaccine__buttons__delete" aria-label="Excluir vacina"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
-                </div>
-            </article>
-
-            
+                      
         </section>
 </main>
   <footer id="footer">
@@ -247,5 +103,11 @@
       </p>
       <p class="footer__text">Controle de vacinas simplificado.</p>
     </footer>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/vacines.js"></script>
+   
 </body>
 </html>
