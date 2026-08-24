@@ -209,7 +209,7 @@ input:focus {
 }
 
 .vaccine__buttons__delete:hover{
-border-radius: 50%;
+    border-radius: 50%;
     background: var(--delete-gradient)
 }
 

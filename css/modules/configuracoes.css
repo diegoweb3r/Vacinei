@@ -24,8 +24,6 @@
     border-radius: var(--border-radius);
 }
 
-
-
 #config form{
     width: 100%;
     max-width: 800px;
@@ -85,6 +83,7 @@
     display: flex;
     flex-direction: column;         
 }
+
 
 .config-buttons__container{
     position: fixed;
