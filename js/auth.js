@@ -16,6 +16,8 @@ const helperNumber = document.getElementById("password-number");
 const helperLetter = document.getElementById("password-letter");
 const helperSpecial = document.getElementById("password-special-caracter");
 
+const deletAccButton = document.getElementById("deletAcc");
+
 
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
@@ -78,6 +80,13 @@ if(registerForm){
         validateRegister(userData);
     })
 }   
+
+if(deletAccButton){
+    deletAccButton.addEventListener("click", e =>{
+        e.preventDefault();
+        deleteUser();
+    })
+}
 
 /* FUNÇÕES DE LOGIN */
 function isLoginFormEmpty(){
@@ -154,6 +163,24 @@ function validateRegister(userData){
     redirectToLogin();
 }
 
+/* EXCLUSÃO DE PERFIL */
+
+function deleteUser(){
+
+    const usuarioLogado = DB.getLogged();
+    if(!usuarioLogado){
+        alert("Nenhum usuario logado")
+        redirectToLogin();
+        return;
+
+    }
+    if(confirm("Você tem certeza que deseja excluir sua conta? Essa decisão não podera ser desfeita")){
+        
+        DB.deleteUser(usuarioLogado);
+        DB.clearLogged();
+        redirectToLogin();
+    }
+}
 
 /* OUTRAS FUNÇÕES */
 function cleanRegisterPasswordInput(){

@@ -68,16 +68,16 @@
                         </div>
                         <div class="input-group"> 
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" placeholder="Digite seu melhor e-mail" required>
+                            <input type="email" id="email" name="email" placeholder="Digite seu melhor e-mail">
                         </div>
                         <div class="input-row">
                             <div class="input-group">    
                                 <label for="cpf">CPF</label>
-                                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
                             </div>
                             <div class="input-group">
                                 <label for="birthdate">Data de nascimento</label>
-                                <input type="date" id="birthdate" name="birthdate" required>
+                                <input type="date" id="birthdate" name="birthdate">
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                             <p class="misc__controls__text__descriptions">Apague sua conta</p>
                         </div>
                         <label class="switch">
-                            <button class="vaccine__buttons__delete" aria-label="Excluir usuario"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
+                            <button id="deletAcc" type="button" class="vaccine__buttons__delete" aria-label="Excluir usuario"><img src="../assets/images/delete.png" alt="icone de excluir"></button>
                         </label>
                     </div>
             </section>
@@ -183,5 +183,7 @@
       </p>
       <p class="footer__text">Controle de vacinas simplificado.</p>
     </footer>
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>

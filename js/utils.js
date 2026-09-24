@@ -3,6 +3,11 @@
 const DB = {
     getUsers: () => JSON.parse(localStorage.getItem("usuarios")) || [],
     setUsers: (users) => localStorage.setItem("usuarios", JSON.stringify(users)),
+    deleteUser: (user) =>{
+        const users = DB.getUsers();
+        const updatedUsers = users.filter(u => u.id !== user.id);
+        DB.setUsers(updatedUsers)
+    },
 
     getLogged: () => JSON.parse(localStorage.getItem("usuarioLogado")),
     setLogged: (user) => localStorage.setItem("usuarioLogado", JSON.stringify(user)),
