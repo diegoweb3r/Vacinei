@@ -18,6 +18,10 @@ const helperSpecial = document.getElementById("password-special-caracter");
 
 const deletAccButton = document.getElementById("deletAcc");
 
+const oldPasswordConfig = document.getElementById("password");
+const newPasswordConfig = document.getElementById("newpassword");
+const confirmnewpasswordConfig = document.getElementById("confirmnewpassword");
+const saveBttn = document.getElementById("saveBttn")
 
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
@@ -88,6 +92,13 @@ if(deletAccButton){
     })
 }
 
+if(saveBttn){
+    saveBttn.addEventListener("click", e =>{
+        e.preventDefault();
+        updatePassword(oldPasswordConfig, newPasswordConfig, confirmnewpasswordConfig)
+    })
+}
+
 /* FUNÇÕES DE LOGIN */
 function isLoginFormEmpty(){
     
@@ -121,6 +132,8 @@ function authenticateUser(){
 
     return true;  
 }
+
+
 
 /* FUNÇÕES DE CADASTRO */
 function isRegisterFormEmpty(userData){
@@ -163,6 +176,28 @@ function validateRegister(userData){
     redirectToLogin();
 }
 
+/* ALTERAÇÃO DE PERFIL */
+function updatePassword(oldPasswordConfig, newPasswordConfig, confirmnewpasswordConfig){
+    if(oldPasswordConfig.value !== usuarioLogado.password){
+       alert("Opa, sua senha atual está errada! Verifique")
+       
+       oldPasswordConfig.focus();
+       clearUpdatePassword();
+    } else{
+        if(!matchPasswords(newPasswordConfig.value, confirmnewpasswordConfig.value)){
+            alert("Opa, senhas não são iguais, reveja!")
+            clearUpdatePassword();
+        } else{
+            usuarioLogado.password = newPasswordConfig.value;
+            DB.updateMasterList(usuarioLogado);
+            DB.setLogged(usuarioLogado);
+            alert("Tudo certo! Senha Alterada");
+            clearUpdatePassword();
+        }
+    }
+}
+
+
 /* EXCLUSÃO DE PERFIL */
 
 function deleteUser(){
@@ -189,6 +224,11 @@ function cleanRegisterPasswordInput(){
     passwordRegisterForm.focus();
 }
 
+function clearUpdatePassword(){
+    oldPasswordConfig.value = "";
+    newPasswordConfig.value = "";
+    confirmnewpasswordConfig.value ="";
+}
 
 function setUpBirthdayDate(){
     if(birthdateRegisterForm){

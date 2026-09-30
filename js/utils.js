@@ -108,6 +108,10 @@ function matchPasswords(p1, p2){
     return false;
 }
 
+function changePassword(oldPassword, newPassword){
+    
+}
+
 function checkUserAccess(){
     if(usuarioLogado && usuarioLogadoName){
         renderUser();
