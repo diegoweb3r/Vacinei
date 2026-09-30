@@ -23,6 +23,10 @@ const newPasswordConfig = document.getElementById("newpassword");
 const confirmnewpasswordConfig = document.getElementById("confirmnewpassword");
 const saveBttn = document.getElementById("saveBttn")
 
+
+const uploadedPic = document.getElementById("profile-pic-uploaded");
+const profilePic = document.getElementById("profile-pic");
+
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
     setUpBirthdayDate();
@@ -62,6 +66,7 @@ if(registerForm){
             birthday: birthdateRegisterForm.value,
             password: passwordRegisterForm.value,
             confirmPassword: confirmPasswordRegisterForm.value,
+            userPhoto: null,
             vaccines: []       
         };
             
@@ -99,6 +104,10 @@ if(saveBttn){
     })
 }
 
+
+
+
+
 /* FUNÇÕES DE LOGIN */
 function isLoginFormEmpty(){
     
@@ -133,6 +142,11 @@ function authenticateUser(){
     return true;  
 }
 
+if(uploadedPic)
+uploadedPic.addEventListener("change", () =>{
+    setUserPicture();
+    updateUserPicture();
+})
 
 
 /* FUNÇÕES DE CADASTRO */
@@ -195,6 +209,19 @@ function updatePassword(oldPasswordConfig, newPasswordConfig, confirmnewpassword
             clearUpdatePassword();
         }
     }
+}
+
+function setUserPicture(){
+    const picFile = uploadedPic.files[0];
+    profilePic.src = URL.createObjectURL(picFile);
+}
+
+function updateUserPicture(){
+    usuarioLogado.userPhoto = profilePic.src;
+    DB.updateMasterList(usuarioLogado);
+    DB.setLogged(usuarioLogado);
+    alert("Sua imagem foi alterada");
+
 }
 
 
