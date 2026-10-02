@@ -23,14 +23,17 @@ const newPasswordConfig = document.getElementById("newpassword");
 const confirmnewpasswordConfig = document.getElementById("confirmnewpassword");
 const saveBttn = document.getElementById("saveBttn")
 
-
+const noPicture = "../assets/images/pessoas.png"
 const uploadedPic = document.getElementById("profile-pic-uploaded");
 const profilePic = document.getElementById("profile-pic");
+const profilePicDashboard = document.getElementById("profile-picture-dashboard");
 
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
     setUpBirthdayDate();
 }
+
+renderUserPicture();
 
 /*EVENT LISTENERS*/
 if(loginForm){
@@ -100,13 +103,9 @@ if(deletAccButton){
 if(saveBttn){
     saveBttn.addEventListener("click", e =>{
         e.preventDefault();
-        updatePassword(oldPasswordConfig, newPasswordConfig, confirmnewpasswordConfig)
+        checkUpdatesSettings();
     })
 }
-
-
-
-
 
 /* FUNÇÕES DE LOGIN */
 function isLoginFormEmpty(){
@@ -142,11 +141,6 @@ function authenticateUser(){
     return true;  
 }
 
-if(uploadedPic)
-uploadedPic.addEventListener("change", () =>{
-    setUserPicture();
-    updateUserPicture();
-})
 
 
 /* FUNÇÕES DE CADASTRO */
@@ -213,20 +207,30 @@ function updatePassword(oldPasswordConfig, newPasswordConfig, confirmnewpassword
 
 function setUserPicture(){
     const picFile = uploadedPic.files[0];
-    profilePic.src = URL.createObjectURL(picFile);
+    const reader = new FileReader();
+
+    reader.onload = () =>{
+        profilePic.src = reader.result;
+        usuarioLogado.userPhoto = reader.result;
+        DB.updateMasterList(usuarioLogado);
+        DB.setLogged(usuarioLogado);
+
+    };
+
+    reader.readAsDataURL(picFile);
 }
 
-function updateUserPicture(){
-    usuarioLogado.userPhoto = profilePic.src;
-    DB.updateMasterList(usuarioLogado);
-    DB.setLogged(usuarioLogado);
-    alert("Sua imagem foi alterada");
+function renderUserPicture(){
+    if(profilePic && usuarioLogado.userPhoto !== null){
+        profilePic.src = usuarioLogado.userPhoto;
+    } 
 
+    if(profilePicDashboard && usuarioLogado.userPhoto !== null){
+        profilePicDashboard.src = usuarioLogado.userPhoto;
+    }
 }
-
 
 /* EXCLUSÃO DE PERFIL */
-
 function deleteUser(){
 
     const usuarioLogado = DB.getLogged();
@@ -255,6 +259,16 @@ function clearUpdatePassword(){
     oldPasswordConfig.value = "";
     newPasswordConfig.value = "";
     confirmnewpasswordConfig.value ="";
+}
+
+function checkUpdatesSettings(){
+    if(oldPasswordConfig.value || newPasswordConfig.value || confirmnewpasswordConfig.value){
+        updatePassword(oldPasswordConfig, newPasswordConfig, confirmnewpasswordConfig);
+    }
+
+    if(uploadedPic.files[0]){
+        setUserPicture();
+    }
 }
 
 function setUpBirthdayDate(){
