@@ -32,6 +32,7 @@
 .notifications {
     gap: 2rem;
 }
+
 .config-profile-picture{
     width: 3.125rem;
     margin-bottom: 0.5rem;
@@ -49,6 +50,22 @@
 #profile-pic{
     border: none !important;
 }
+
+#profile-pic-uploaded{
+    border: none !important;
+}
+    #profile-pic-uploaded::file-selector-button {
+    background: var(--brand-gradient);
+    padding: .5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: .1rem;
+    cursor: pointer;
+}
+
 
 #config form input:focus{
     outline: none;
