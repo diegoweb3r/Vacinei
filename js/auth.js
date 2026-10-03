@@ -28,12 +28,18 @@ const uploadedPic = document.getElementById("profile-pic-uploaded");
 const profilePic = document.getElementById("profile-pic");
 const profilePicDashboard = document.getElementById("profile-picture-dashboard");
 
+const userNameConfig = document.getElementById("user-name-config");
+const userEmailConfig = document.getElementById("user-email-config");
+const userCpfConfig = document.getElementById("user-cpf-config");
+const userBirthdayConfig = document.getElementById("user-birthday-config");
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
-    setUpBirthdayDate();
+    maxBirthdayDate();
 }
 
 renderUserPicture();
+
+renderUserInformation();
 
 /*EVENT LISTENERS*/
 if(loginForm){
@@ -140,7 +146,6 @@ function authenticateUser(){
 
     return true;  
 }
-
 
 
 /* FUNÇÕES DE CADASTRO */
@@ -272,15 +277,27 @@ function checkUpdatesSettings(){
 }
 
 function setUpBirthdayDate(){
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, 0);
+    const day = String(today.getDate()).padStart(2, 0);
+
+    const formatedDate = `${day}/${month}/${year}`;
+    return formatedDate;
+}
+
+function maxBirthdayDate(){
     if(birthdateRegisterForm){
-        const today = new Date();
-
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, 0);
-        const day = String(today.getDate()).padStart(2, 0);
-
-        const formatedDate = `${year}-${month}-${day}`;
-
-        birthdateRegisterForm.max = formatedDate;
+        userAge = setUpBirthdayDate();    
+        birthdateRegisterForm.max = userAge;
     }
+}
+
+function renderUserInformation(){
+   
+    userNameConfig.innerText = usuarioLogado.userName;
+    userEmailConfig.innerText = usuarioLogado.email;
+    userCpfConfig.innerText = usuarioLogado.cpf;
+    userBirthdayConfig.innerText = setUpBirthdayDate(usuarioLogado.birthday)
 }

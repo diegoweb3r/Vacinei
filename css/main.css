@@ -101,6 +101,10 @@ a{
     position: relative;
 }
 
+.input-group p:first-child{
+    font-weight: 700;
+}
+
 .auth-form input:focus {
     outline: none;
     border-color: var(--primary-color);
