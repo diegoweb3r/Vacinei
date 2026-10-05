@@ -32,6 +32,8 @@ const userNameConfig = document.getElementById("user-name-config");
 const userEmailConfig = document.getElementById("user-email-config");
 const userCpfConfig = document.getElementById("user-cpf-config");
 const userBirthdayConfig = document.getElementById("user-birthday-config");
+
+
 /*FUNÇÕES IMEDIATAS*/
 if(birthdateRegisterForm){
     maxBirthdayDate();
@@ -113,6 +115,8 @@ if(saveBttn){
     })
 }
 
+
+
 /* FUNÇÕES DE LOGIN */
 function isLoginFormEmpty(){
     
@@ -146,6 +150,8 @@ function authenticateUser(){
 
     return true;  
 }
+
+
 
 
 /* FUNÇÕES DE CADASTRO */

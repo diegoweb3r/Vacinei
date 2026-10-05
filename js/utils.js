@@ -1,3 +1,4 @@
+const menuToggleButton = document.getElementById("menu-toggle-button");
 
 // BANCO DE DADOS
 const DB = {
@@ -37,6 +38,14 @@ function setVaccineLabel(vaccineDate){
     } else {
         return "Aplicada"
     }
+}
+
+//EVENT LISTENERs
+if(menuToggleButton){
+    menuToggleButton.addEventListener("click", (e) =>{
+        e.preventDefault();
+        toggleMobileMenu();
+    })
 }
 
 // REDIRECTS
@@ -108,10 +117,6 @@ function matchPasswords(p1, p2){
     return false;
 }
 
-function changePassword(oldPassword, newPassword){
-    
-}
-
 function checkUserAccess(){
     if(usuarioLogado && usuarioLogadoName){
         renderUser();
@@ -163,9 +168,23 @@ function filterByStatus(status){
         })
 
         renderVaccines(filtered);
-
     }
     
+}
+
+//FUNÇÕES DE ACESSIBILIDADE
+
+function toggleMobileMenu(){
+   const toggleMenuButton = document.getElementById("menu-toggle-button");
+   const toggleMenuButtonImage = document.getElementById("menu-toggle-button-image"); 
+   const navbarLinksContainer = document.getElementById("navbar__links-container"); 
+
+    toggleMenuButton.classList.toggle("is-open");
+    const isOpen = toggleMenuButton.classList.contains("is-open");
+
+   toggleMenuButtonImage.src = isOpen ? "/assets/images/fechar.png" : "/assets/images/cardapio.png";
+   navbarLinksContainer.style.display = isOpen? 'flex' : 'none';
+   toggleMenuButton.setAttribute('aria-expanded', isOpen);
 }
 
 

@@ -32,11 +32,10 @@
             <p class="navbar__logo-text">Vacinei</p>
         </div>
         <div class="mobile-menu">
-            <input type="checkbox">
-            <img class="mobile-menu__img" src="./assets/images/cardapio.png">
+            <button id="menu-toggle-button" aria-expanded="false"><img id="menu-toggle-button-image"class="mobile-menu__img" src="./assets/images/cardapio.png" alt="ícone de 3 traços para menu"></button>
         </div>
-        <nav class="navbar__links-container">
-            <ul>
+        <nav  class="navbar__links-container">
+            <ul id="navbar__links-container">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#features">Funcionalidades</a></li>
                 <li><a href="./pages/login.html" class="nav-link-login">Entrar</a></li>
@@ -101,5 +100,7 @@
       </p>
       <p class="footer__text">Controle de vacinas simplificado.</p>
     </footer>
+
+    <script src="./js/utils.js"></script>
   </body>
 </html>
