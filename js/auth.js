@@ -21,7 +21,7 @@ const deletAccButton = document.getElementById("deletAcc");
 const oldPasswordConfig = document.getElementById("password");
 const newPasswordConfig = document.getElementById("newpassword");
 const confirmnewpasswordConfig = document.getElementById("confirmnewpassword");
-const saveBttn = document.getElementById("saveBttn")
+const saveBttn = document.getElementById("saveBttn");
 
 const noPicture = "../assets/images/pessoas.png"
 const uploadedPic = document.getElementById("profile-pic-uploaded");
@@ -32,6 +32,7 @@ const userNameConfig = document.getElementById("user-name-config");
 const userEmailConfig = document.getElementById("user-email-config");
 const userCpfConfig = document.getElementById("user-cpf-config");
 const userBirthdayConfig = document.getElementById("user-birthday-config");
+
 
 
 /*FUNÇÕES IMEDIATAS*/
@@ -301,9 +302,21 @@ function maxBirthdayDate(){
 }
 
 function renderUserInformation(){
-   
-    userNameConfig.innerText = usuarioLogado.userName;
-    userEmailConfig.innerText = usuarioLogado.email;
-    userCpfConfig.innerText = usuarioLogado.cpf;
-    userBirthdayConfig.innerText = setUpBirthdayDate(usuarioLogado.birthday)
+    if(!usuarioLogado) return;
+
+    if(userNameConfig){
+        userNameConfig.innerText = usuarioLogado.userName;
+    }
+
+    if(userEmailConfig){
+        userEmailConfig.innerText = usuarioLogado.email;
+    }
+
+    if(userCpfConfig){
+        userCpfConfig.innerText = usuarioLogado.cpf;
+    }
+
+    if(userBirthdayConfig){
+        userBirthdayConfig.innerText = setUpBirthdayDate(usuarioLogado.birthday);
+    }
 }

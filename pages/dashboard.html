@@ -33,13 +33,20 @@
                 <img src="../assets/images/vacinei-logo.png" alt="logo vacinei" class="navbar__logo-image">
                 <p class="navbar__logo-text">Vacinei</p>
             </div>
-            <div class="mobile-menu">
-            <input type="checkbox">
-            <img class="mobile-menu__img" src="../assets/images/cardapio.png">
-        </div>
-            <nav class="navbar__links-container">
-                <ul>
-                    <li><a class="bttn delete" id="logoutButton">LOGOUT</a></li>
+             <div class="mobile-menu">
+                <button id="menu-toggle-button" aria-expanded="false"><img id="menu-toggle-button-image"class="mobile-menu__img" src="../assets/images/cardapio.png" alt="ícone de 3 traços para menu"></button>
+            </div>
+            <nav id="navbar__links-container" class="navbar__links-container">
+                <ul class="navbar-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#features">Funcionalidades</a></li>
+                    <li><button id="dropdown-button" aria-expanded="false"><img class="section-image" src="../assets/images/pessoas.png" alt="Ícone de usuário"></button>
+                        <ul  class="dropdown-menu">
+                            <li><a href="./dashboard.html">Dashboard</a></li>
+                            <li><a href="./configuracoes.html">Configurações</a></li>
+                            <li><a id="logout-button-link">Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -106,6 +113,7 @@
     <script src="../js/auth.js"></script>
     <script src="../js/dashboard.js"></script>
     <script src="../js/vacines.js"></script>
+    <script src="../js/header.js" defer></script>
    
 </body>
 </html>

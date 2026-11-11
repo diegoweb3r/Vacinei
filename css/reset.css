@@ -33,6 +33,7 @@ button,
 textarea,
 select {
   font: inherit;
+  background: none;
 }
 
 /* 6. Remove animations for people who prefer not to see them */

@@ -1,190 +1,204 @@
 const menuToggleButton = document.getElementById("menu-toggle-button");
 
+
 // BANCO DE DADOS
 const DB = {
-    getUsers: () => JSON.parse(localStorage.getItem("usuarios")) || [],
-    setUsers: (users) => localStorage.setItem("usuarios", JSON.stringify(users)),
-    deleteUser: (user) =>{
-        const users = DB.getUsers();
-        const updatedUsers = users.filter(u => u.id !== user.id);
-        DB.setUsers(updatedUsers)
-    },
+  getUsers: () => JSON.parse(localStorage.getItem("usuarios")) || [],
+  setUsers: (users) => localStorage.setItem("usuarios", JSON.stringify(users)),
+  deleteUser: (user) => {
+    const users = DB.getUsers();
+    const updatedUsers = users.filter((u) => u.id !== user.id);
+    DB.setUsers(updatedUsers);
+  },
 
-    getLogged: () => JSON.parse(localStorage.getItem("usuarioLogado")),
-    setLogged: (user) => localStorage.setItem("usuarioLogado", JSON.stringify(user)),
+  getLogged: () => JSON.parse(localStorage.getItem("usuarioLogado")),
+  setLogged: (user) =>
+    localStorage.setItem("usuarioLogado", JSON.stringify(user)),
 
-    clearLogged: () => localStorage.removeItem("usuarioLogado"),
+  clearLogged: () => localStorage.removeItem("usuarioLogado"),
 
-    updateMasterList: (updatedUser) => {
-        const users = DB.getUsers();
-        const index = users.findIndex(u => u && u.id === updatedUser.id);
+  updateMasterList: (updatedUser) => {
+    const users = DB.getUsers();
+    const index = users.findIndex((u) => u && u.id === updatedUser.id);
 
-        if(index !== -1){
-            users[index] = updatedUser;
-            DB.setUsers(users);
-        }
+    if (index !== -1) {
+      users[index] = updatedUser;
+      DB.setUsers(users);
     }
-}
+  },
+};
 
 const usuarioLogado = DB.getLogged();
 
 //
-function setVaccineLabel(vaccineDate){
-    const dateVaccine = new Date(vaccineDate).getTime();
-    const today = Date.now();
+function setVaccineLabel(vaccineDate) {
+  const dateVaccine = new Date(vaccineDate).getTime();
+  const today = Date.now();
 
-    if(dateVaccine > today){
-        return "Pendente"
-    } else {
-        return "Aplicada"
-    }
+  if (dateVaccine > today) {
+    return "Pendente";
+  } else {
+    return "Aplicada";
+  }
 }
 
 //EVENT LISTENERs
-if(menuToggleButton){
-    menuToggleButton.addEventListener("click", (e) =>{
-        e.preventDefault();
-        toggleMobileMenu();
-    })
+if (menuToggleButton) {
+  menuToggleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("CLIQUEI NO HAMBURGER");
+    toggleMobileMenu();
+  });
 }
+
+
 
 // REDIRECTS
-function redirectToLogin(){
-    window.location.href = "login.html"
+function redirectToLogin() {
+  window.location.href = "login.html";
 }
 
-function redirectToDashboard(){
-    window.location.href = "dashboard.html"
+function redirectToDashboard() {
+  window.location.href = "dashboard.html";
 }
 
-function redirectToCadastro(){
-    window.location.href = "formulario-vacina.html"
+function redirectToCadastro() {
+  window.location.href = "formulario-vacina.html";
 }
 
+function calculateAge(birthdayValue) {
+  const today = new Date();
+  const birthday = new Date(birthdateRegisterForm.value);
 
-function calculateAge(birthdayValue){
-    const today = new Date();
-    const birthday = new Date(birthdateRegisterForm.value);
+  let age = today.getFullYear() - birthday.getFullYear();
+  const monthDiff = today.getMonth() - birthday.getMonth();
 
-    let age = today.getFullYear() - birthday.getFullYear();
-    const monthDiff = today.getMonth() - birthday.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthday.getDate())
+  ) {
+    age--;
+  }
 
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() <  birthday.getDate())){
-        age--;
-    }
-
-    return age;
+  return age;
 }
 
-function validatePassword(password){
-    const isLengthValid = password.length >= 8;
-    const hasNumber = /[0-9]/.test(password);
-    const hasLetter = /[a-zA-Z]/.test(password);
-    const hasSpecial = /[!@#$%^&*]/.test(password);
+function validatePassword(password) {
+  const isLengthValid = password.length >= 8;
+  const hasNumber = /[0-9]/.test(password);
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasSpecial = /[!@#$%^&*]/.test(password);
 
-    if (isLengthValid){
-       helperLength.classList.add("helper-valid")
-    } else {
-        helperLength.classList.remove("helper-valid")
-    };
+  if (isLengthValid) {
+    helperLength.classList.add("helper-valid");
+  } else {
+    helperLength.classList.remove("helper-valid");
+  }
 
-    if(hasNumber){
-        helperNumber.classList.add("helper-valid")
-    } else {
-        helperNumber.classList.remove("helper-valid")
-    };
+  if (hasNumber) {
+    helperNumber.classList.add("helper-valid");
+  } else {
+    helperNumber.classList.remove("helper-valid");
+  }
 
-    if(hasLetter){
-        helperLetter.classList.add("helper-valid")
-    } else {
-        helperLetter.classList.remove("helper-valid")
-    };
+  if (hasLetter) {
+    helperLetter.classList.add("helper-valid");
+  } else {
+    helperLetter.classList.remove("helper-valid");
+  }
 
-    if(hasSpecial){
-        helperSpecial.classList.add("helper-valid")
-    } else {
-        helperSpecial.classList.remove("helper-valid")
-    };
+  if (hasSpecial) {
+    helperSpecial.classList.add("helper-valid");
+  } else {
+    helperSpecial.classList.remove("helper-valid");
+  }
 
-    return isLengthValid && hasLetter && hasNumber && hasSpecial;
-}  
-
-function matchPasswords(p1, p2){
-    if(p1 === p2){
-        return true
-    };
-
-    return false;
+  return isLengthValid && hasLetter && hasNumber && hasSpecial;
 }
 
-function checkUserAccess(){
-    if(usuarioLogado && usuarioLogadoName){
-        renderUser();
-        renderVaccines();
-        renderVaccinesCounter();
-    } else if (!usuarioLogado){
-        redirectToLogin();
-    }   
+function matchPasswords(p1, p2) {
+  if (p1 === p2) {
+    return true;
+  }
+
+  return false;
+}
+
+function checkUserAccess() {
+  if (usuarioLogado && usuarioLogadoName) {
+    renderUser();
+    renderVaccines();
+    renderVaccinesCounter();
+  } else if (!usuarioLogado) {
+    redirectToLogin();
+  }
 }
 
 /* FUNÇÕES DE ALERTAS */
-function showEmptyFormErrorMessage(){
-    alert ("Opa! Tem campo vazio, não pode. Complete todas as informações, por favor!");
-};
-
-function showLoginErrorMessage(){
-    alert("Opa, e-mail ou senha invalido! Tente novamente");
-};
-
-//FUNÇÕES DE DATA
-const isDateInFuture = (dateString) =>{
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const inputDate = new Date(dateString);
-    return inputDate > today;
+function showEmptyFormErrorMessage() {
+  alert(
+    "Opa! Tem campo vazio, não pode. Complete todas as informações, por favor!",
+  );
 }
 
-function formateDateToBR(dateString){
-    if(!dateString){
-        return;
-    }
-    
-    const vaccineDateParts = dateString.split("-");
+function showLoginErrorMessage() {
+  alert("Opa, e-mail ou senha invalido! Tente novamente");
+}
 
-    return `${vaccineDateParts[2]}/${vaccineDateParts[1]}/${vaccineDateParts[0]}`; 
+//FUNÇÕES DE DATA
+const isDateInFuture = (dateString) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const inputDate = new Date(dateString);
+  return inputDate > today;
+};
+
+function formateDateToBR(dateString) {
+  if (!dateString) {
+    return;
+  }
+
+  const vaccineDateParts = dateString.split("-");
+
+  return `${vaccineDateParts[2]}/${vaccineDateParts[1]}/${vaccineDateParts[0]}`;
 }
 
 //FUNÇÕES DE FILTRO
-function filterByStatus(status){
-    const all = usuarioLogado.vaccines || [];
+function filterByStatus(status) {
+  const all = usuarioLogado.vaccines || [];
 
-    if (status === 'all'){
-        renderVaccines(all);
+  if (status === "all") {
+    renderVaccines(all);
+  } else {
+    const filtered = all.filter((v) => {
+      const label = setVaccineLabel(v.vaccineDate);
+      return label.toLowerCase() === status.toLowerCase();
+    });
 
-    } else {
-            const filtered = all.filter(v => {
-            const label = setVaccineLabel(v.vaccineDate);
-            return label.toLowerCase() === status.toLowerCase();
-        })
-
-        renderVaccines(filtered);
-    }
-    
+    renderVaccines(filtered);
+  }
 }
 
 //FUNÇÕES DE ACESSIBILIDADE
 
-function toggleMobileMenu(){
-   const toggleMenuButton = document.getElementById("menu-toggle-button");
-   const toggleMenuButtonImage = document.getElementById("menu-toggle-button-image"); 
-   const navbarLinksContainer = document.getElementById("navbar__links-container"); 
+function toggleMobileMenu() {
+  const toggleMenuButton = document.getElementById("menu-toggle-button");
+  const toggleMenuButtonImage = document.getElementById(
+    "menu-toggle-button-image",
+  );
+  const navbarLinksContainer = document.getElementById(
+    "navbar__links-container",
+  );
 
-    toggleMenuButton.classList.toggle("is-open");
-    const isOpen = toggleMenuButton.classList.contains("is-open");
+  toggleMenuButton.classList.toggle("is-open");
 
-   toggleMenuButtonImage.src = isOpen ? "/assets/images/fechar.png" : "/assets/images/cardapio.png";
-   navbarLinksContainer.style.display = isOpen? 'flex' : 'none';
-   toggleMenuButton.setAttribute('aria-expanded', isOpen);
+  const isOpen = toggleMenuButton.classList.contains("is-open");
+
+  toggleMenuButtonImage.src = isOpen
+    ? "/assets/images/fechar.png"
+    : "/assets/images/cardapio.png";
+  navbarLinksContainer.classList.toggle("is-open", isOpen);
+  toggleMenuButton.setAttribute("aria-expanded", isOpen);
 }
 
 
